@@ -1,0 +1,159 @@
+<section
+  class="w-full border-2 bg-slate-200 dark:bg-sky-800 rounded-md p-2"
+  [ngClass]="{ 'h-24': openSidebar!, 'h-72': openSidebar }"
+>
+  <div
+    class="h-8 w-full flex flex-row justify-end"
+    [ngClass]="{ hidden: openSidebar! }"
+  >
+    <button class="my-auto" (click)="onClickComment()">
+      <span class="text-white font-semibold">x</span>
+    </button>
+  </div>
+  <div
+    class="h-8 w-full grid grid-cols-4 divide-x-2 divide-slate-800 border-2 border-slate-800 rounded-t-md bg-slate-300"
+    [ngClass]="{ hidden: openSidebar! }"
+  >
+    <div class="col-span-1 flex flex-row">
+      <button>
+        <app-font-icon
+          [colorIcon]="'sky'"
+          sizeIcon="'xs'"
+          [optionIcon]="'bold'"
+          [isBox]="false"
+        ></app-font-icon>
+      </button>
+      <button>
+        <app-font-icon
+          [colorIcon]="'sky'"
+          sizeIcon="'xs'"
+          [optionIcon]="'italic'"
+          [isBox]="false"
+        ></app-font-icon>
+      </button>
+      <button>
+        <app-font-icon
+          [colorIcon]="'sky'"
+          sizeIcon="'xs'"
+          [optionIcon]="'underline'"
+          [isBox]="false"
+        ></app-font-icon>
+      </button>
+    </div>
+    <div class="col-span-1 flex flex-row">
+      <button>
+        <app-font-icon
+          [colorIcon]="'sky'"
+          sizeIcon="'xs'"
+          [optionIcon]="'quote-left'"
+          [isBox]="false"
+        ></app-font-icon>
+      </button>
+      <button>
+        <app-font-icon
+          [colorIcon]="'sky'"
+          sizeIcon="'xs'"
+          [optionIcon]="'list-ol'"
+          [isBox]="false"
+        ></app-font-icon>
+      </button>
+      <button>
+        <app-font-icon
+          [colorIcon]="'sky'"
+          sizeIcon="'xs'"
+          [optionIcon]="'list-ul'"
+          [isBox]="false"
+        ></app-font-icon>
+      </button>
+    </div>
+    <div class="col-span-1 flex flex-row">
+      <button>
+        <app-font-icon
+          [colorIcon]="'sky'"
+          sizeIcon="'xs'"
+          [optionIcon]="'code'"
+          [isBox]="false"
+        ></app-font-icon>
+      </button>
+      <button>
+        <app-font-icon
+          [colorIcon]="'sky'"
+          sizeIcon="'xs'"
+          [optionIcon]="'link'"
+          [isBox]="false"
+        ></app-font-icon>
+      </button>
+      <button>
+        <app-font-icon
+          [colorIcon]="'sky'"
+          sizeIcon="'xs'"
+          [optionIcon]="'image'"
+          [isBox]="false"
+        ></app-font-icon>
+      </button>
+    </div>
+    <div class="col-span-1 flex flex-row justify-end mx-auto">
+      <app-font-icon
+        [colorIcon]="'sky'"
+        [sizeIcon]="'xs'"
+        [optionIcon]="'eye'"
+        [isBox]="false"
+      ></app-font-icon>
+      <button class="font-semibold text-sm">Preview</button>
+    </div>
+  </div>
+  <form action="#" [formGroup]="myCommentForm">
+    <div class="h-20 w-full relative" (click)="onClickComment()">
+      <textarea
+        name="newComment"
+        id="newComment"
+        class="textarea-comment"
+        cols="30"
+        rows="10"
+        formControlName="markdownContent"
+      ></textarea>
+      <img
+        src="https://picsum.photos/200/300"
+        alt=""
+        class="w-10 h-10 object-cover absolute top-2 left-4 rounded-full"
+      />
+      <p class="absolute top-4 left-16 italic text-sm">
+        Escribe tu aporte o pregunta
+      </p>
+    </div>
+    <div class="flex flex-row justify-between">
+      <div class="flex flex-row justify-start space-x-2">
+        <input
+          type="radio"
+          id="input"
+          class="radio-default"
+          formControlName="type"
+        />
+        <label for="input" class="label-radio font-semibold">Aporte</label>
+        <input
+          type="radio"
+          id="question"
+          class="radio-default"
+          formControlName="type"
+        />
+        <label for="question" class="label-radio font-semibold">Question</label>
+      </div>
+      <button
+        class="w-32 h-10 flex flex-row justify-center align-middle bg-sky-700 hover:bg-sky-800 rounded-md"
+        type="submit"
+        (click)="onSendComment()"
+      >
+        <app-font-icon
+          [colorIcon]="'white'"
+          [sizeIcon]="'lg'"
+          [optionIcon]="'reply'"
+          [isBox]="false"
+          class="my-auto"
+        ></app-font-icon>
+        <span class="text-slate-50 font-semibold text-sm my-auto"
+          >Publicar</span
+        >
+      </button>
+    </div>
+  </form>
+</section>

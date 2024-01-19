@@ -1,0 +1,34 @@
+.main-container {
+  width: 100%;
+  height: calc(100% - 150px);
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  margin: auto;
+  background-color: #f0f4f8;
+  color: #2d3748;
+}
+
+.dark .main-container {
+  background-color: #1a202c;
+  color: #cbd5e0;
+}
+
+.body-container {
+  width: calc(100% - 160px);
+  height: 100%;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+@media (min-width: 1024px) {
+  .body-container {
+    width: calc(100% - 480px);
+  }
+}
+
+@media (min-width: 1280px) {
+  .body-container {
+    width: calc(100% - 700px);
+  }
+}

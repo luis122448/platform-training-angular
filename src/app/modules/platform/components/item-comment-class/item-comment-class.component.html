@@ -1,0 +1,60 @@
+<article class="w-full relative h-96 overflow-hidden article-container space-y-2">
+  <div class="flex flex-row space-x-2 pt-2">
+    <div class="w-10 h-10">
+      <img [src]="commentClass?.urlPhoto" alt="" class="w-10 h-10 object-cover rounded-full">
+    </div>
+    <div class="w-full h-10">
+      <strong class="text-inline line-clamp-1">{{ commentClass?.username }}</strong>
+      <span class="text-inline">Hace 1 mes</span>
+    </div>
+  </div>
+  <div class="flex flex-row space-x-2">
+    <div class="w-10 h-14 rounded-md flex flex-col justify-center bg-slate-200">
+      <app-font-icon [colorIcon]="'sky'" [sizeIcon]="'lg'" [optionIcon]="'heart'" [isBox]="false" class="mx-auto"></app-font-icon>
+      <span class="box text-inline text-center font-semibold text-sky-700">{{ commentClass?.likeComment }}</span>
+    </div>
+    <div class="w-full max-h-72">
+      <div>
+        <markdown [data]="commentClass?.markdownContent"></markdown>
+      </div>
+    </div>
+  </div>
+  <div class="flex flex-row space-x-2">
+    <div class="w-10 h-10">
+
+    </div>
+    <div class="w-full h-10 flex flex-row justify-start">
+      <app-font-icon [colorIcon]="'sky'" [sizeIcon]="'lg'" [optionIcon]="'reply'" [isBox]="false"></app-font-icon>
+      <span>Responder</span>
+    </div>
+  </div>
+  <div class="flex flex-row space-x-2" *ngIf="( commentClass?.commentModelList?.length || 0 ) > 0">
+    <div class="w-10 h-full">
+
+    </div>
+    <div *ngFor="let item of commentClass?.commentModelList">
+      <div class="w-10 h-10">
+        <img [src]="item.urlPhoto" alt="" class="w-10 h-10 object-cover rounded-full">
+      </div>
+      <div class="w-full h-10">
+        <strong class="text-inline line-clamp-1">{{ item.urlPhoto }}</strong>
+        <span class="text-inline">Hace 1 mes</span>
+      </div>
+      <div class="flex flex-row">
+        <div class="w-10 h-20 rounded-sm flex flex-col justify-around">
+          <app-font-icon [colorIcon]="'sky'" [sizeIcon]="'lg'" [optionIcon]="'heart'"></app-font-icon>
+          <span>{{ item.likeComment }}</span>
+        </div>
+        <div class="w-full max-h-96">
+          <div>
+            <markdown [data]="item.markdownContent"></markdown>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="fixed bottom-0 w-full h-10 flex flex-row justify-center">
+    <app-font-icon [colorIcon]="'sky'" [sizeIcon]="'lg'" [optionIcon]="'angles-drow'" [isBox]="false"></app-font-icon>
+    <span>Ver más</span>
+  </div>
+</article>

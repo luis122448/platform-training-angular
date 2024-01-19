@@ -1,1 +1,25 @@
-<p>comment-class works!</p>
+<main
+  class="sidebar-rigth px-2 py-4"
+  (mouseenter)="!(openSidebar = true)"
+  (mouseleave)="!(openSidebar = false)"
+>
+  <app-box-comment [openSidebar]="openSidebar"></app-box-comment>
+    <section>
+        <div class="flex flex-row justify-around">
+            <button class="font-semibold border-b-2 boder-slate-800">Aportes</button>
+            <button class="font-semibold border-b-2 boder-slate-800">Preguntas</button>
+        </div>
+        <div class="flex flex-row justify-around">
+            <span class="text-inline line-clamp-1">Ordenar por :</span>
+            <div class="flex flex-row space-x-2">
+              <span class="bg-blue-100 text-blue-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded dark:bg-blue-900 dark:text-blue-300 line-clamp-1">Mas Votados</span>
+              <span class="bg-blue-100 text-blue-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded dark:bg-blue-900 dark:text-blue-300 line-clamp-1">Nuevos</span>
+              <span class="bg-blue-100 text-blue-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded dark:bg-blue-900 dark:text-blue-300 line-clamp-1">Sin Responder</span>
+            </div>
+        </div>
+    </section>
+    <section>
+      <app-item-comment-class *ngFor="let item of listCommentClassModel()"
+        [commentClass]="item"></app-item-comment-class>
+    </section>
+</main>

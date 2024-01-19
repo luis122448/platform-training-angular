@@ -1,0 +1,46 @@
+<section>
+  <li class="mb-2 flex flex-row justify-start space-x-2" *ngIf="objectUserClassModel?.typeClass !== 'TAG'; else isDividerSection">
+    <section [ngSwitch]="status">
+      <div *ngSwitchCase="'complete'">
+        <app-font-icon
+          [optionIcon]="'circle'"
+          [colorIcon]="'green'"
+          [isDivider]="false"
+          [number]="objectUserClassModel?.position || 0"></app-font-icon>
+      </div>
+      <div *ngSwitchCase="'incomplete'">
+        <app-font-icon
+          [optionIcon]="'circle'"
+          [colorIcon]="'gray'"
+          [isDivider]="false"
+          [number]="objectUserClassModel?.position || 0"></app-font-icon>
+      </div>
+      <div *ngSwitchCase="'notShow'">
+        <app-font-icon
+          [optionIcon]="'circle'"
+          [colorIcon]="'gray'"
+          [isDivider]="false"
+          [number]="objectUserClassModel?.position || 0"></app-font-icon>
+      </div>
+      <div *ngSwitchDefault>
+      </div>
+    </section>
+    <section class="flex justify-center" [class.display-none]="!isOpenSidebar">
+      <h3 class="menu-sidebar-text whitespace-normal">{{ objectUserClassModel?.title }}</h3>
+    </section>
+  </li>
+  <ng-template #isDividerSection>
+    <li class="mb-2 flex flex-row justify-start space-x-2">
+      <section>
+        <app-font-icon
+            [optionIcon]="'flag'"
+            [colorIcon]="'sky'"
+            [isDivider]="true"
+            [number]="objectUserClassModel?.position || 0"></app-font-icon>
+      </section>
+      <section class="flex justify-center" [class.display-none]="!isOpenSidebar">
+        <h3 class="menu-sidebar-text whitespace-normal">{{ objectUserClassModel?.title }}</h3>
+      </section>
+    </li>
+  </ng-template>
+</section>

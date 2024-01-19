@@ -1,1 +1,12 @@
-<p>video-class works!</p>
+<section #videoContainer class="video-container">
+  <youtube-player
+    class="video-player"
+    [videoId]="objectUserClassModel()?.idVideo"
+    suggestedQuality="highres"
+    [height]="360"
+    [width]="640"
+    [startSeconds]="0"
+    (stateChange)="onStateChange($event)"
+    (ready)="onReady($event)"
+    ></youtube-player>
+</section>

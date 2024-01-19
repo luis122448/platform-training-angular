@@ -1,7 +1,20 @@
-/* To learn more about this file see: https://angular.io/config/tsconfig. */
 {
   "compileOnSave": false,
   "compilerOptions": {
+    "paths": {
+      "@guard/*":["src/app/guards/*"],
+      "@interceptor/*":["src/app/interceptors/*"],
+      "@environment/*":["src/app/environments/*"],
+      "@auth-model/*":["src/app/modules/auth/models/*"],
+      "@auth-service/*":["src/app/modules/auth/services/*"],
+      "@auth-component/*":["src/app/modules/auth/components/*"],
+      "@platform-layout/*":["src/app/modules/platform/layouts/*"],
+      "@platform-model/*":["src/app/modules/platform/models/*"],
+      "@platform-service/*":["src/app/modules/platform/services/*"],
+      "@platform-component/*":["src/app/modules/platform/components/*"],
+      "@shared-component/*":["src/app/modules/shared/components/*"],
+      "@shared-model/*":["src/app/modules/shared/models/*"],
+    },
     "baseUrl": "./",
     "outDir": "./dist/out-tsc",
     "forceConsistentCasingInFileNames": true,
