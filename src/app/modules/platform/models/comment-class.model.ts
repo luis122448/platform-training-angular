@@ -1,13 +1,14 @@
-export interface CommentClassModel {
+export interface CommentModel {
+  idCommentRef?: number;
   idComment: number;
   idClass: number;
-  type: string;
+  typeComment: string;
   registerUser: number;
   username: string;
   urlPhoto: string;
-  registedDate: string;
+  registerDate: Date | Number[];
   likeComment: number;
   dislikeComment: number;
   markdownContent: string;
-  commentModelList: CommentClassModel[];
+  commentModelList: CommentModel[];
 }

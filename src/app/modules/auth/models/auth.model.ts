@@ -12,3 +12,15 @@ export interface ApiResponseAuth {
   logUser: String
   logTime: Date | number[]
 }
+
+export interface BasicUserModel {
+  username: string
+  role: string
+  name: string
+  lastName: string
+  urlPhoto: string
+  email: string
+  address: string
+  phone: string
+  comment: string
+}

@@ -1,0 +1,139 @@
+.border-default {
+  @apply border-slate-500 dark:border-gray-700
+}
+
+.nav-container {
+  @apply w-full bg-transparent border-gray-200 dark:bg-gray-900 flex px-4 py-2 justify-around
+}
+
+// .main-container {
+//   @apply sm:px-4 bg-slate-50 dark:bg-slate-900 dark:text-gray-400 max-w-4xl mx-auto
+// }
+
+.nav-links {
+  @apply font-medium flex flex-col p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700
+}
+
+.nav-title {
+  @apply block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent whitespace-nowrap
+}
+
+.nav-title-select {
+  @apply block py-2 pl-3 pr-4 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 dark:text-white md:dark:text-blue-500 whitespace-nowrap
+}
+
+.basic-button-blue {
+  @apply w-[150px] flex justify-center bg-sky-700 hover:bg-sky-800 focus:ring-sky-300 text-white space-x-2 rounded px-5 py-2 text-sm font-medium
+}
+
+.basic-icon-container {
+  @apply relative my-auto w-[12px] h-[12px]
+}
+
+.basic-icon {
+  @apply absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2
+}
+
+.section-title {
+  @apply text-lg py-1 my-4 font-semibold text-slate-800 dark:text-gray-400 border-b-4 border-slate-400 dark:border-gray-700
+}
+
+.basic-title {
+  @apply flex items-center mb-1 text-lg font-semibold text-gray-900 dark:text-white
+}
+
+.project-title {
+  @apply text-2xl tracking-tight font-extrabold text-gray-900 dark:text-white
+}
+
+.project-container {
+  @apply gap-8 items-center px-4 mx-auto max-w-screen-xl xl:gap-16 md:grid md:grid-cols-2 lg:px-6
+}
+
+.basic-sub-title {
+  @apply block mb-2 text-sm font-bold leading-none text-gray-900 dark:text-gray-500
+}
+
+.basic-icon-title {
+  @apply absolute flex items-center justify-center w-6 h-6 bg-blue-100 rounded-full -left-3 ring-8 ring-white dark:ring-gray-900 dark:bg-blue-900
+}
+
+.basic-text{
+  @apply mb-4 text-base font-normal text-gray-800 dark:text-gray-300
+}
+
+.resalt-text{
+  @apply text-cyan-600 font-semibold
+}
+
+.basic-container-tag{
+  @apply space-x-2 my-4 text-gray-500 dark:text-gray-400 flex flex-wrap gap-y-2
+}
+
+.basic-tag-blue {
+  @apply bg-blue-100 text-blue-800 text-sm font-medium px-2.5 py-0.5 rounded dark:bg-blue-900 dark:text-blue-300
+}
+
+.basic-tag-green {
+  @apply bg-green-100 text-green-800 text-sm font-medium px-2.5 py-0.5 rounded dark:bg-green-900 dark:text-green-300
+}
+
+.basic-tag-yellow {
+  @apply bg-yellow-100 text-yellow-800 text-sm font-medium px-2.5 py-0.5 rounded dark:bg-yellow-900 dark:text-yellow-300
+}
+
+.basic-tag-red {
+  @apply bg-red-100 text-red-800 text-sm font-medium px-2.5 py-0.5 rounded dark:bg-red-900 dark:text-red-300
+}
+
+.basic-tag-gray {
+  @apply bg-gray-100 text-gray-800 text-sm font-medium px-2.5 py-0.5 rounded dark:bg-gray-900 dark:text-gray-300
+}
+
+.basic-tag-purple {
+  @apply bg-purple-100 text-purple-800 text-sm font-medium px-2.5 py-0.5 rounded dark:bg-purple-900 dark:text-purple-300
+}
+
+.basic-tag-indigo {
+  @apply bg-indigo-100 text-indigo-800 text-sm font-medium px-2.5 py-0.5 rounded dark:bg-indigo-900 dark:text-indigo-300
+}
+
+.basic-circle-list {
+  @apply absolute w-3 h-3 bg-gray-500 rounded-full mt-1.5 -start-1.5 border border-white dark:border-gray-900 dark:bg-gray-700
+}
+
+.basic-title-list {
+  @apply flex items-center mb-1 text-sm font-semibold text-gray-900 dark:text-white whitespace-nowrap
+}
+
+.basic-sub-title-list {
+  @apply mb-1 text-sm font-semibold leading-none text-gray-900 dark:text-gray-500
+}
+
+.basic-text-list {
+  @apply text-base font-normal text-gray-800 dark:text-gray-300
+}
+
+.basic-line-list {
+  @apply flex w-full items-center after:inline-block after:h-1 after:w-full after:border-4 after:border-b after:border-gray-100 after:content-[''] dark:after:border-gray-700
+}
+/*
+.basic-circle-list {
+  @apply flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-gray-100 dark:bg-gray-700
+} */
+
+.carousel-button {
+  @apply w-4 h-4 text-slate-400 dark:text-gray-600
+}
+
+.carousel-button-container {
+  @apply inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/30 dark:bg-gray-600/30 group-hover:bg-white/50 dark:group-hover:bg-gray-600/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none
+}
+
+.carousel-button-prev {
+  @apply absolute top-0 left-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer focus:outline-none
+}
+
+.carousel-button-next {
+  @apply absolute top-0 right-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer focus:outline-none
+}

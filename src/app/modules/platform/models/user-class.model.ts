@@ -1,4 +1,4 @@
-import { CommentClassModel } from "./comment-class.model";
+import { CommentModel } from "./comment-class.model";
 import { BasicTeacherModel } from "./teacher.model";
 
 export interface UserClassModel {
@@ -19,7 +19,7 @@ export interface UserClassModel {
     finalized: boolean;
     advance: number;
     requiredTime: number;
-    commentModelList: CommentClassModel[];
+    commentModelList: CommentModel[];
     teacherModel: BasicTeacherModel;
 
 }

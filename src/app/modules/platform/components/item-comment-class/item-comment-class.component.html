@@ -1,60 +1,111 @@
-<article class="w-full relative h-96 overflow-hidden article-container space-y-2">
-  <div class="flex flex-row space-x-2 pt-2">
-    <div class="w-10 h-10">
-      <img [src]="commentClass?.urlPhoto" alt="" class="w-10 h-10 object-cover rounded-full">
+<main
+  class="list-comment-container"
+  [ngClass]="!isOpenDetail ? 'max-h-96' : 'h-auto'"
+  [class.display-none]="!isOpenSidebar"
+>
+  <section class="left-comment-container">
+    <img
+      [src]="commentClass?.urlPhoto"
+      [alt]="commentClass?.username"
+      class="w-10 h-10 object-cover rounded-full"
+    />
+    <div class="w-10 max-h-14 rounded-md flex flex-col justify-center bg-slate-200 dark:bg-transparent">
+      <app-font-icon
+        [colorIcon]="'sky'"
+        [sizeIcon]="'lg'"
+        [optionIcon]="'heart'"
+        [isBox]="false"
+        class="mx-auto"
+        (click)="likeComment(commentClass?.idComment)"
+      ></app-font-icon>
+      <span class="box text-inline text-center font-semibold text-sky-700">{{
+        commentClass?.likeComment
+      }}</span>
     </div>
-    <div class="w-full h-10">
-      <strong class="text-inline line-clamp-1">{{ commentClass?.username }}</strong>
+  </section>
+  <section class="w-[380px] h-full flex flex-col justify-start">
+    <article class="w-full h-10">
+      <strong class="text-inline line-clamp-1">{{
+        commentClass?.username
+      }}</strong>
       <span class="text-inline">Hace 1 mes</span>
-    </div>
-  </div>
-  <div class="flex flex-row space-x-2">
-    <div class="w-10 h-14 rounded-md flex flex-col justify-center bg-slate-200">
-      <app-font-icon [colorIcon]="'sky'" [sizeIcon]="'lg'" [optionIcon]="'heart'" [isBox]="false" class="mx-auto"></app-font-icon>
-      <span class="box text-inline text-center font-semibold text-sky-700">{{ commentClass?.likeComment }}</span>
-    </div>
-    <div class="w-full max-h-72">
+    </article>
+    <article class="w-full max-h-72">
       <div>
         <markdown [data]="commentClass?.markdownContent"></markdown>
       </div>
-    </div>
-  </div>
-  <div class="flex flex-row space-x-2">
-    <div class="w-10 h-10">
-
-    </div>
-    <div class="w-full h-10 flex flex-row justify-start">
-      <app-font-icon [colorIcon]="'sky'" [sizeIcon]="'lg'" [optionIcon]="'reply'" [isBox]="false"></app-font-icon>
-      <span>Responder</span>
-    </div>
-  </div>
-  <div class="flex flex-row space-x-2" *ngIf="( commentClass?.commentModelList?.length || 0 ) > 0">
-    <div class="w-10 h-full">
-
-    </div>
-    <div *ngFor="let item of commentClass?.commentModelList">
-      <div class="w-10 h-10">
-        <img [src]="item.urlPhoto" alt="" class="w-10 h-10 object-cover rounded-full">
-      </div>
-      <div class="w-full h-10">
-        <strong class="text-inline line-clamp-1">{{ item.urlPhoto }}</strong>
-        <span class="text-inline">Hace 1 mes</span>
-      </div>
-      <div class="flex flex-row">
-        <div class="w-10 h-20 rounded-sm flex flex-col justify-around">
-          <app-font-icon [colorIcon]="'sky'" [sizeIcon]="'lg'" [optionIcon]="'heart'"></app-font-icon>
-          <span>{{ item.likeComment }}</span>
-        </div>
-        <div class="w-full max-h-96">
-          <div>
-            <markdown [data]="item.markdownContent"></markdown>
+    </article>
+    <article class="flex justify-start">
+      <app-button-standard
+        [typeBtn]="'submit'"
+        [optionBtn]="'reply'"
+        [colorBtn]="'transparent'"
+        (click)="openReply()"
+      >
+        Responder
+      </app-button-standard>
+    </article>
+    <article *ngIf="isOpenReply">
+      <app-box-comment
+        [idCommentRef]="commentClass?.idComment || 0"
+        [idClass]="idClass"
+        [isOpenSidebar]="isOpenSidebar"
+        (registerComment)="registerComment($event)"
+      ></app-box-comment>
+    </article>
+    <article *ngIf="(commentClass?.commentModelList?.length || 0) > 0">
+      <section
+        class="sub-list-comment-container"
+        *ngFor="let item of commentClass?.commentModelList"
+      >
+        <section class="left-comment-container">
+          <img
+            [src]="item?.urlPhoto"
+            [alt]="item?.username"
+            class="w-10 h-10 object-cover rounded-full"
+          />
+          <div
+            class="w-10 h-14 rounded-md flex flex-col justify-center bg-slate-200 dark:bg-transparent"
+          >
+            <app-font-icon
+              [colorIcon]="'sky'"
+              [sizeIcon]="'lg'"
+              [optionIcon]="'heart'"
+              [isBox]="false"
+              class="mx-auto"
+              (click)="likeComment(item.idComment)"
+            ></app-font-icon>
+            <span
+              class="box text-inline text-center font-semibold text-sky-700"
+              >{{ item.likeComment }}</span
+            >
           </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="fixed bottom-0 w-full h-10 flex flex-row justify-center">
-    <app-font-icon [colorIcon]="'sky'" [sizeIcon]="'lg'" [optionIcon]="'angles-drow'" [isBox]="false"></app-font-icon>
-    <span>Ver más</span>
-  </div>
-</article>
+        </section>
+        <section class="w-[300px] h-full flex flex-col justify-start">
+          <article class="w-full h-10">
+            <strong class="text-inline line-clamp-1">{{
+              item?.username
+            }}</strong>
+            <span class="text-inline">Hace 1 mes</span>
+          </article>
+          <article class="w-full max-h-64">
+            <markdown [data]="item?.markdownContent"></markdown>
+          </article>
+        </section>
+      </section>
+    </article>
+    <article
+      class="absolute top-[300px] z-10 w-full h-full flex flex-row justify-start pb-0 pt-12 rounded-md gradient-comment"
+      [ngClass]="isOpenDetail ? 'hidden' : 'max-h-96'"
+    >
+      <app-button-standard
+        [typeBtn]="'submit'"
+        [optionBtn]="'reply'"
+        [colorBtn]="'transparent'"
+        (click)="isOpenDetail = true"
+      >
+        Responder
+      </app-button-standard>
+    </article>
+  </section>
+</main>

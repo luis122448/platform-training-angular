@@ -7,7 +7,7 @@ import { MatsnackbarMessageComponent } from '@shared-component/matsnackbar-messa
 import { MatsnackbarSuccessComponent } from '@shared-component/matsnackbar-success/matsnackbar-success.component';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { AuthService } from '../../services/auth.service';
-import { DefaultValueService } from '../../services/default-value.service';
+import { DefaultValueService } from '../../services/default-values.service';
 import { MatSnackBarSuccessConfig } from 'src/app/utils/constants';
 import { GlobalStatusService } from 'src/app/modules/platform/services/global-status.service';
 import { faPen } from '@fortawesome/free-solid-svg-icons';

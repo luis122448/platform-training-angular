@@ -1,10 +1,10 @@
 <section #videoContainer class="video-container">
   <youtube-player
     class="video-player"
-    [videoId]="objectUserClassModel()?.idVideo"
+    [videoId]="userClassModel?.idVideo"
     suggestedQuality="highres"
-    [height]="360"
-    [width]="640"
+    [width]="videoWidth"
+    [height]="videoHeight"
     [startSeconds]="0"
     (stateChange)="onStateChange($event)"
     (ready)="onReady($event)"

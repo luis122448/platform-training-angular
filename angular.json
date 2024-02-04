@@ -30,9 +30,12 @@
               "src/assets"
             ],
             "styles": [
-              "@angular/material/prebuilt-themes/indigo-pink.css",
+              "src/styles.scss",
               "src/styles-layout.scss",
-              "src/styles.scss"
+              "src/styles-add.scss",
+              "node_modules/ngx-spinner/animations/ball-spin-clockwise.css",
+              "@angular/material/prebuilt-themes/indigo-pink.css",
+              "src/app/modules/shared/material/global-material-theme.scss"
             ],
             "scripts": []
           },

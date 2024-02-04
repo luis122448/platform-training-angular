@@ -2,33 +2,47 @@
   class="sidebar-left"
   (mouseenter)="!(openSidebar = true)"
   (mouseleave)="!(openSidebar = false)"
+  [class.sidebar-left-open]="openSidebar"
 >
-  <div class="menu-sidebar">
-    <div class="menu-siderbar-icon">
+  <section class="menu-sidebar">
+    <div class="menu-sidebar-icon h-10 w-10">
       <img
-        [src]="objectUserCourseModel()?.urlIcon"
-        [alt]="objectUserCourseModel()?.title"
-        class="icon-operac"
+        [src]="userCourseModel?.urlIcon"
+        [alt]="userCourseModel?.title"
+        class="object-fill h-10 w-10 rounded-full"
       />
     </div>
-      <h2 class="menu-sidebar-text" [class.display-none]="!openSidebar">{{
-        objectUserCourseModel()?.title
-      }}</h2>
-  </div>
-  <ol
-    class="px-2 py-4 relative text-gray-500 border-gray-200 dark:border-gray-700 dark:text-gray-400"
-  >
-    <div *ngFor="let item of listUserClassModel()">
-      <div>
-        <div class="absolute left-6 pointer-events-none h-10 w-1"
-        [ngClass]="{ 'bg-green-700': item.finalized, 'bg-slate-600': !item.finalized }"></div>
+    <span class="menu-sidebar-text" [class.display-none-left]="!openSidebar">
+      {{ userCourseModel?.title }}
+    </span>
+  </section>
+  <section>
+    <ol
+      class="px-2 py-4 relative text-gray-500 border-gray-200 dark:border-gray-700 dark:text-gray-400"
+    >
+      <div *ngFor="let item of listUserClassModel">
+        <div>
+          <div
+            class="absolute left-6 pointer-events-none h-12 w-0.5"
+            [ngClass]="{
+              'bg-green-700': item.finalized,
+              'bg-slate-600': !item.finalized
+            }"
+          ></div>
+          <div
+            class="absolute left-6 pointer-events-none h-6 w-0.5"
+            [ngClass]="{
+              'bg-green-700': item.finalized,
+              'bg-slate-600': !item.finalized
+            }"
+          ></div>
+        </div>
+        <app-item-list-class
+          [isOpenSidebar]="openSidebar"
+          (click)="onClickClass(item.idClass)"
+          [objectUserClassModel]="item"
+        ></app-item-list-class>
       </div>
-      <app-item-list-class
-        [isOpenSidebar]="openSidebar"
-        (click)="onClickClass(item.idClass)"
-        [objectUserClassModel]="item"
-      ></app-item-list-class>
-
-    </div>
-  </ol>
+    </ol>
+  </section>
 </main>

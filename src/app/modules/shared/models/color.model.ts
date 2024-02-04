@@ -1,4 +1,4 @@
-export type Colors = 'sky' | 'yellow' | 'green' | 'red' | 'violet' | 'gray' | 'blue' | 'red' | 'light' | 'white';
+export type Colors = 'sky' | 'yellow' | 'green' | 'red' | 'violet' | 'gray' | 'blue' | 'red' | 'light' | 'white' | 'transparent';
 
 export type ObjColors = Record<string, Record<string, boolean>>
 
@@ -52,6 +52,9 @@ export const COLORS:ObjColors = {
     'bg-gray-700': true,
     'hover:bg-gray-800': true,
     'text-white': true
+  },
+  transparent: {
+    'bg-transparent': true,
   }
 }
 
@@ -111,6 +114,9 @@ export const COLORICONBOX:ObjColors = {
     'bg-gray-700': true,
     'hover:bg-gray-800': true,
     'text-white': true
+  },
+  transparent: {
+    'bg-transparent': true,
   }
 }
 

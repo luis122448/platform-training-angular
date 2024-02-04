@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy, ViewChild, ElementRef, signal } from '@angular/core';
+import { Component, OnInit, OnDestroy, ViewChild, ElementRef, signal, Input, ChangeDetectorRef } from '@angular/core';
 import { GlobalStatusService } from '../../services/global-status.service';
 import { UserClassModel, ViewInfoClassModel } from '../../models/user-class.model';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
@@ -7,7 +7,6 @@ import { ActivatedRoute } from '@angular/router';
 import { UserClassService } from '@platform-service/user-class.service';
 import { Dialog } from '@angular/cdk/dialog';
 import { DialogErrorAlertComponent } from '@shared-component/dialog-error-alert/dialog-error-alert.component';
-import { CommentClassModel } from '@platform-model/comment-class.model';
 
 @Component({
   selector: 'app-video-class',
@@ -16,75 +15,85 @@ import { CommentClassModel } from '@platform-model/comment-class.model';
 })
 export class VideoClassComponent implements OnInit, OnDestroy{
 
-  objectUserClassModel = signal<UserClassModel | null>(null)
-  listCommentClassModel = signal<CommentClassModel[]>([]);
-  idCourse = signal<number>(0);
-  idClass = signal<number>(0);
-  urlVideo: string = '';
-  idVideo: string = '';
+  @Input() userClassModel: UserClassModel | undefined = undefined;
   progress: boolean = false;
   finalized: boolean = false;
 
+  @ViewChild('videoContainer') demoYouTubePlayer: ElementRef<HTMLDivElement> | undefined;
+  videoWidth: number | undefined;
+  videoHeight: number | undefined;
+
   constructor(
     private globalStatusService: GlobalStatusService,
-    private activatedRoute: ActivatedRoute,
     private userClassService: UserClassService,
+    private changeDetectorRef: ChangeDetectorRef,
     private dialog: Dialog,
   ) { }
-  ngOnDestroy(): void {
-    // if (this.viewInfoClass){
-    //   this.viewInfoClass.isShow = true;
-    //   // this.viewInfoClass.currentTimeVideo =  this.videoPlayer.nativeElement.currentTimeVideo;
-    //   // this.datasourceClassService.putViewUpdate(this.viewInfoClass);
-    // }
-  }
 
-  ngOnInit(): void {
-    this.globalStatusService.setLoading(true)
-    this.activatedRoute.params.subscribe(params => {
-      this.idCourse.set(params['idCourse'] || 1);
-      this.idClass.set(params['idClass'] || 1);
-    });
-    this.userClassService.getFindByClass(this.idClass()).subscribe({
-      next: data =>{
-        if(data.status<=0){
+  ngOnDestroy(): void {
+    window.removeEventListener('resize', this.onResize);
+    if(!this.userClassModel){
+      return;
+    }
+    this.globalStatusService.setLoading(true);
+    const userClassModel = {
+      ...this.userClassModel,
+      isShow: this.progress,
+      isComplete: this.finalized,
+      currentTimeVideo: '0',
+    }
+    this.userClassService.putUpdate(this.userClassModel.idClass, userClassModel).subscribe({
+      next: (data) => {
+        if (data.status <= 0) {
           this.dialog.open(DialogErrorAlertComponent, {
             width: '400px',
-            data: data
-          })
+            data: data,
+          });
         }
-        this.objectUserClassModel.set(data.object);
-        this.globalStatusService.setLoading(false)
+        this.globalStatusService.setLoading(false);
       },
-      error: err => {
+      error: (err) => {
         this.dialog.open(DialogErrorAlertComponent, {
           width: '400px',
-          data: err.error
-        })
-        this.globalStatusService.setLoading(false)
-      }
+          data: err.error,
+        });
+        this.globalStatusService.setLoading(false);
+      },
     })
   }
 
+  ngOnInit(): void {
+  }
+
+
+  ngAfterViewInit(): void {
+    this.onResize();
+    window.addEventListener('resize', this.onResize);
+  }
+
+  onResize = (): void => {
+    // Automatically expand the video to fit the page up to 1200px x 720px
+    if (this.demoYouTubePlayer) {
+      this.videoWidth = Math.min(this.demoYouTubePlayer.nativeElement.clientWidth, 1200);
+      this.videoHeight = this.videoWidth * 0.6;
+      this.changeDetectorRef.detectChanges();
+    }
+  }
+
   onVideoPlay(){
-    if (!this.objectUserClassModel){
+    if (!this.userClassModel){
       return;
     }
     this.progress = true;
-    // this.datasourceClassService.putViewUpdate(this.viewInfoClass);
     console.log('onVideoPlay');
   }
   onVideoPause(){
     console.log('onVideoPause');
   }
   onVideoEnded(){
-    if (!this.objectUserClassModel){
+    if (!this.userClassModel){
       return;
     }
-    // this.viewInfoClass.isShow = true;
-    // this.viewInfoClass.isComplete = true;
-    // this.viewInfoClass.currentTimeVideo = '0';
-    // this.datasourceClassService.putViewUpdate(this.viewInfoClass);
     console.log('onVideoEnded');
   }
 

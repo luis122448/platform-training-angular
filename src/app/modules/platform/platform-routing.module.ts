@@ -6,11 +6,11 @@ import { PlatformVideoComponent } from '@platform-layout/platform-video/platform
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'dashboard',
+    redirectTo: 'preview',
     pathMatch: 'full'
   },
   {
-    path: 'dashboard',
+    path: 'preview',
     canActivate: [ AuthGuard ],
     component : PlatformVideoComponent,
   }

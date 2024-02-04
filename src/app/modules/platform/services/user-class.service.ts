@@ -26,12 +26,16 @@ export class UserClassService {
     return this.httpCliente.get<ApiResponseList<UserClassModel>>(`${this.API_URL}${this.PATH_URL}/by-course`, { params: httpParams });
   }
 
-
   postGenerateByCourse(idCourse: number, idUser: number) {
     return this.httpCliente.post<ApiResponseList<UserClassModel>>(`${this.API_URL}${this.PATH_URL}/generate-by-course`, {
       idCourse,
       idUser
     });
+  }
+
+  putUpdate(idClass: number, data: UserClassModel){
+    const httpParams = new HttpParams().set('idClass', idClass.toString());
+    return this.httpCliente.put<ApiResponseObject<UserClassModel>>(`${this.API_URL}${this.PATH_URL}`, data, { params: httpParams });
   }
 
 }

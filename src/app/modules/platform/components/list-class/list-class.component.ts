@@ -1,4 +1,4 @@
-import { Component, OnInit, signal } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output, signal } from '@angular/core';
 import { UserClassService } from '@platform-service/user-class.service';
 import { GlobalStatusService } from '@platform-service/global-status.service';
 import { UserClassModel } from '@platform-model/user-class.model';
@@ -18,8 +18,9 @@ import { UserCourseService } from '@platform-service/user-course.service';
 })
 export class ListClassComponent implements OnInit{
 
-  listUserClassModel = signal<UserClassModel[]>([]);
-  objectUserCourseModel = signal<UserCourseModel | null>(null)
+  @Output() changeSpecificClass = new EventEmitter<number>();
+  @Input() listUserClassModel: UserClassModel[] = [];
+  @Input() userCourseModel: UserCourseModel | undefined = undefined;
   idCourse = signal<number>(0);
   idClass = signal<number>(0);
   openSidebar = false;
@@ -35,62 +36,11 @@ export class ListClassComponent implements OnInit{
   ) { }
 
   ngOnInit(): void {
-    this.globalStatusService.setLoading(true)
-    this.activatedRoute.params.subscribe(params => {
-      this.idCourse.set(params['idCourse'] || 1);
-      this.idClass.set(params['idClass'] || 1);
-    });
-    this.userCourseService.getFindByCourse(this.idCourse()).subscribe({
-      next: data =>{
-        if(data.status<=0){
-          this.dialog.open(DialogErrorAlertComponent, {
-            width: '400px',
-            data: data
-          })
-        }
-        this.objectUserCourseModel.set(data.object);
-        this.globalStatusService.setLoading(false)
-      },
-      error: err => {
-        this.dialog.open(DialogErrorAlertComponent, {
-          width: '400px',
-          data: err.error
-        })
-        this.globalStatusService.setLoading(false)
-      },
-    })
-    this.userClassService.getFindByCourse(this.idCourse()).subscribe({
-      next: data =>{
-        console.log(data)
-        if(data.status<=0){
-          this.dialog.open(DialogErrorAlertComponent, {
-            width: '400px',
-            data: data
-          })
-        }
-        if(data.status === 1){
-          this.matSnackBar.openFromComponent(MatsnackbarSuccessComponent, MatSnackBarSuccessConfig);
-          this.listUserClassModel.set(data.list);
-        }
-        this.globalStatusService.setLoading(false)
-      },
-      error: err => {
-        this.dialog.open(DialogErrorAlertComponent, {
-          width: '400px',
-          data: err.error
-        })
-        this.globalStatusService.setLoading(false)
-      },
-    })
   }
 
   onClickClass(idClass: number){
     this.idClass.set(idClass);
-    this.router.navigate([], {
-      relativeTo: this.activatedRoute,
-      queryParams: { idClass },
-      queryParamsHandling: 'merge',
-    });
+    this.changeSpecificClass.emit(idClass);
   }
 
 }

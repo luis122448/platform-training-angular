@@ -1,13 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 
-import { DefaultValueService } from './default-value.service';
+import { UserCommentService } from './user-comment.service';
 
-describe('DefaultValueService', () => {
-  let service: DefaultValueService;
+describe('UserCommentService', () => {
+  let service: UserCommentService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(DefaultValueService);
+    service = TestBed.inject(UserCommentService);
   });
 
   it('should be created', () => {

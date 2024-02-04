@@ -2,24 +2,32 @@
   class="sidebar-rigth px-2 py-4"
   (mouseenter)="!(openSidebar = true)"
   (mouseleave)="!(openSidebar = false)"
+  [class.sidebar-open]="openSidebar"
 >
-  <app-box-comment [openSidebar]="openSidebar"></app-box-comment>
-    <section>
-        <div class="flex flex-row justify-around">
-            <button class="font-semibold border-b-2 boder-slate-800">Aportes</button>
-            <button class="font-semibold border-b-2 boder-slate-800">Preguntas</button>
-        </div>
-        <div class="flex flex-row justify-around">
-            <span class="text-inline line-clamp-1">Ordenar por :</span>
-            <div class="flex flex-row space-x-2">
-              <span class="bg-blue-100 text-blue-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded dark:bg-blue-900 dark:text-blue-300 line-clamp-1">Mas Votados</span>
-              <span class="bg-blue-100 text-blue-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded dark:bg-blue-900 dark:text-blue-300 line-clamp-1">Nuevos</span>
-              <span class="bg-blue-100 text-blue-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded dark:bg-blue-900 dark:text-blue-300 line-clamp-1">Sin Responder</span>
-            </div>
-        </div>
+  <app-box-comment
+    [isOpenSidebar]="openSidebar"
+    [idClass]="idClass()"
+    [idCommentRef]="0"
+    (registerComment)="registerComment($event)"
+  ></app-box-comment>
+  <section [class.display-none]="!openSidebar">
+    <section class="py-2 grid grid-cols-4">
+      <article class="col-span-1">
+        <span class="basic-text">Ordenar por :</span>
+      </article>
+      <article class="col-span-3 flex flex-row justify-around">
+        <span class="basic-tag-indigo">Mas Votados</span>
+        <span class="basic-tag-indigo">Nuevos</span>
+        <span class="basic-tag-indigo">Sin Responder</span>
+      </article>
     </section>
-    <section>
-      <app-item-comment-class *ngFor="let item of listCommentClassModel()"
-        [commentClass]="item"></app-item-comment-class>
-    </section>
+  </section>
+  <section>
+    <app-item-comment-class
+      *ngFor="let item of listCommentClassModel()"
+      [commentClass]="item"
+      [isOpenSidebar]="openSidebar"
+      [idClass]="idClass()"
+    ></app-item-comment-class>
+  </section>
 </main>

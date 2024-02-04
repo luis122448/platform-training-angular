@@ -1,5 +1,5 @@
-import { Component, OnInit, signal } from '@angular/core';
-import { CommentClassModel } from '@platform-model/comment-class.model';
+import { Component, OnChanges, OnInit, SimpleChanges, signal } from '@angular/core';
+import { CommentModel } from '@platform-model/comment-class.model';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Dialog } from '@angular/cdk/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
@@ -13,9 +13,9 @@ import { DialogErrorAlertComponent } from '@shared-component/dialog-error-alert/
   templateUrl: './comment-class.component.html',
   styleUrls: ['./comment-class.component.scss']
 })
-export class CommentClassComponent implements OnInit{
+export class CommentClassComponent implements OnInit, OnChanges{
 
-  listCommentClassModel = signal<CommentClassModel[]>([]);
+  listCommentClassModel = signal<CommentModel[]>([]);
   idClass = signal<number>(0);
   openSidebar: boolean = false;
   openWriteComment: boolean = false;
@@ -39,10 +39,15 @@ export class CommentClassComponent implements OnInit{
     ) {
     this.buildForm();
   }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    console.log(changes)
+  }
+
   ngOnInit(): void {
     this.globalStatusService.setLoading(true)
     this.activatedRoute.params.subscribe(params => {
-      this.idClass.set(params['idClass'] || 2);
+      this.idClass.set(params['idClass'] || 1);
     });
     this.classCommentService.getFindByClass(this.idClass()).subscribe({
       next: data =>{
@@ -72,6 +77,20 @@ export class CommentClassComponent implements OnInit{
 
   onSendComment() {
 
+  }
+
+  registerComment($event: CommentModel | undefined) {
+    if ($event && $event.idCommentRef === 0) {
+      this.listCommentClassModel.set([...this.listCommentClassModel(), $event]);
+      console.log(this.listCommentClassModel())
+    } else {
+      this.listCommentClassModel.set(this.listCommentClassModel().map((comment) => {
+        if (comment.idComment === $event?.idCommentRef) {
+          comment.commentModelList.push($event as CommentModel);
+        }
+        return comment;
+      }));
+    }
   }
 
 }

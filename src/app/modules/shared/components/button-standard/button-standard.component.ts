@@ -62,6 +62,8 @@ export class ButtonStandardComponent {
         return faTrashArrowUp
       case 'close':
         return faCircleXmark
+      case 'reply':
+        return faCircleLeft
       default:
         return faQuestion; // Puedes establecer un ícono predeterminado aquí si es necesario
     }

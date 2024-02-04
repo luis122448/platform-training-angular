@@ -1,13 +1,31 @@
-<div class="relative h-8 w-8 rounded-md hover:scale-110 hover:transform mx-auto my-auto" [ngClass]="colors" *ngIf="isBox; else noBoxIcon">
-  <fa-icon [icon]="getIcon(optionIcon)" class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2" [size]="sizeIconProp">
+<div
+  class="relative h-8 w-8 rounded-md hover:scale-110 hover:transform mx-auto my-auto"
+  [ngClass]="colors"
+  *ngIf="isBox; else noBoxIcon"
+>
+  <fa-icon
+    [icon]="getIcon(optionIcon)"
+    class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2"
+    [size]="sizeIconProp"
+  >
   </fa-icon>
-  <div class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 text-center text-xs font-bold" *ngIf="!isDivider">
+  <div
+    class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 text-center text-xs font-bold"
+    *ngIf="!isDivider"
+  >
     {{ number }}
   </div>
 </div>
 <ng-template #noBoxIcon>
-  <div class="relative h-8 w-8 hover:scale-110 hover:transform mx-auto my-auto" [ngClass]="colors">
-    <fa-icon [icon]="getIcon(optionIcon)" class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2" [size]="sizeIconProp">
+  <div
+    class="relative h-8 w-8 hover:scale-110 hover:transform mx-auto my-auto"
+    [ngClass]="colors"
+  >
+    <fa-icon
+      [icon]="getIcon(optionIcon)"
+      class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2"
+      [size]="sizeIconProp"
+    >
     </fa-icon>
   </div>
 </ng-template>
