@@ -19,7 +19,6 @@ export class MyDate{
   }
 
   static convertToCustomDate(dateArray: number[] | Date | null | undefined): Date {
-    console.log(dateArray);
     if (dateArray === null || dateArray === undefined) {
       return new Date(2000, 0, 1);
     }
@@ -33,18 +32,14 @@ export class MyDate{
     const minutes = dateArray[4] || 0;
     const seconds = dateArray[5] || 0;
     const milliseconds = dateArray[6] || 0;
-    console.log(year, month, day, hours, minutes, seconds, milliseconds);
-    console.log();
     return new Date(year, month, day, hours, minutes, seconds, milliseconds);
   }
 
   static converToCustomDateSpecial(dateArray: number[] | Date | null | undefined): string {
 
     const fecha: Date = MyDate.convertToCustomDate(dateArray);
-    console.log(fecha);
     const ahora = new Date();
     const diferencia = ahora.getTime() - fecha.getTime();
-    console.log(diferencia);
 
     // Cálculo de la antigüedad en minutos, horas, días, meses y años
     const minutos = Math.floor(diferencia / (1000 * 60));

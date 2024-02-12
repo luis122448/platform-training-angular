@@ -1,4 +1,4 @@
 export const environment = {
   production: false,
-  API_URL: 'http://localhost:8089/app-project',
+  API_URL: 'https://platform-training.luis122448.dev/app-project',
 };
