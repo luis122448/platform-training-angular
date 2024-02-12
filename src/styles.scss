@@ -63,18 +63,6 @@ body {
   background: #555;
 }
 
-.dense-1 {
-  @include mat.all-component-densities(-1);
-}
-
-.dense-2 {
-  @include mat.all-component-densities(-2);
-}
-
-.dense-3 {
-  @include mat.all-component-densities(-3);
-}
-
 // TextArea
 .textarea-default {
   @apply h-14 w-full rounded-sm border-2 border-slate-800 px-2 py-1 text-xs text-slate-800 placeholder-transparent
@@ -290,7 +278,7 @@ body {
 }
 
 .basic-text {
-  @apply my-auto p-0 text-sm text-slate-800
+  @apply my-auto p-0 text-xs text-slate-800 font-semibold
   dark:text-gray-400 dark:font-normal
 }
 
@@ -386,7 +374,7 @@ body {
 }
 
 .box-coment-detail {
-  @apply h-[125px] w-full rounded-sm border-2 border-slate-800 px-4 py-4 text-xs text-slate-800 placeholder-transparent
+  @apply h-[125px] w-full rounded-sm border-2 border-slate-800 px-4 py-4 text-xs text-slate-800 placeholder-transparent bg-slate-50
   disabled:bg-slate-300 disabled:font-semibold
   hover:border-sky-700 hover:outline-none
   hover:ring-1 hover:ring-sky-700
@@ -404,9 +392,9 @@ body {
 }
 
 .sub-list-comment-container {
-  @apply w-full relative h-auto overflow-hidden space-y-2 flex flex-row justify-start
+  @apply w-full relative h-auto overflow-hidden space-y-2 flex flex-row justify-start items-start
 }
 
 .left-comment-container {
-  @apply w-14 h-full flex flex-col justify-start space-y-1 items-center
+  @apply w-14 h-full flex flex-col justify-start space-y-2 items-center
 }

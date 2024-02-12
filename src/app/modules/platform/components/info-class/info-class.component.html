@@ -5,7 +5,7 @@
         {{ userClassModel?.title }}
       </h2>
       <div
-        class="rounded-md border-2 bg-transparent ml-2 w-28 h-8 flex items-center justify-around"
+        class="rounded-md border-2 bg-transparent ml-2 w-28 h-8 flex items-center justify-around border-slate-400 dark:border-slate-400"
       >
         <span class="text-center font-semibold"
           >Clase {{ userClassModel?.position }} / {{ countClass }}</span
@@ -59,7 +59,7 @@
   </section>
   <section class="flex flex-row justify-start space-x-4">
     <div
-      class="flex flex-col items-center justify-start border-2 dark:border rounded-full h-8 w-8"
+      class="flex flex-col items-center justify-start border-2 rounded-full h-8 w-8 border-slate-400 dark:border-slate-400"
     >
       <img
         [src]="userCourseModel?.urlIcon"
@@ -68,7 +68,7 @@
       />
     </div>
     <div class="flex flex-col items-center justify-start">
-      <p class="text-lg">
+      <p class="text-lg font-semibold text-slate-800 dark:text-slate-400">
         {{ userCourseModel?.title }}
       </p>
     </div>

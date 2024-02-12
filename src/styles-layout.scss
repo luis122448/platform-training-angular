@@ -17,25 +17,15 @@
 
 .left-container {
   @apply z-10 h-full w-[80px] overflow-hidden
-  xl:w-[250px] xl:overflow-auto
-  2xl:w-[250px] 2xl:overflow-auto;
+  xl:w-[250px]
+  2xl:w-[250px];
 }
 
 .rigth-container {
   @apply z-10 h-full w-[80px] overflow-hidden
-  lg:w-[450px] lg:overflow-auto
-  xl:w-[450px] xl:overflow-auto
-  2xl:w-[500px] 2xl:overflow-auto;
-}
-
-.sidebar-left {
-  @apply relative z-30 h-full w-[80px] space-y-2 divide-y divide-dotted divide-slate-500 bg-slate-50 px-4
-  py-4 shadow-xl
-  transition-all duration-500 dark:bg-slate-900
-  dark:text-slate-400 hover:max-lg:absolute
-  hover:max-xl:left-0
-  hover:max-xl:w-[250px]
-  xl:w-full;
+  lg:w-[450px]
+  xl:w-[450px]
+  2xl:w-[500px];
 }
 
 .sidebar-rigth {
@@ -43,9 +33,23 @@
   py-4 shadow-xl
   transition-all duration-500 dark:bg-slate-900
   dark:text-slate-400 hover:max-lg:absolute
+  lg:overflow-auto
+  hover:max-lg:overflow-auto
   hover:max-lg:right-0
   hover:max-lg:w-[450px]
   lg:w-full;
+}
+
+.sidebar-left {
+  @apply relative z-30 h-full w-[80px] space-y-2 divide-y divide-dotted divide-slate-500 bg-slate-50 px-4
+  py-4 shadow-xl
+  transition-all duration-500 dark:bg-slate-900
+  dark:text-slate-400 hover:max-xl:absolute
+  xl:overflow-auto
+  hover:max-xl:overflow-auto
+  hover:max-xl:left-0
+  hover:max-xl:w-[250px]
+  xl:w-full;
 }
 
 // Menu Sidebar
@@ -55,6 +59,12 @@
   hover:bg-blue-100 hover:font-normal hover:text-blue-500
   dark:text-gray-400
   dark:hover:bg-slate-500 dark:hover:font-normal dark:hover:text-gray-50;
+}
+
+.menu-sidebar-no-hover {
+  @apply my-auto grid w-full grid-cols-5 rounded-md p-2 space-x-2
+  text-left text-slate-700
+  dark:text-gray-400;
 }
 
 .menu-sidebar-left {

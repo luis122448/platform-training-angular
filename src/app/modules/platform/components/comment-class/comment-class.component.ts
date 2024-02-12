@@ -1,4 +1,4 @@
-import { Component, OnChanges, OnInit, SimpleChanges, signal } from '@angular/core';
+import { Component, Input, OnChanges, OnInit, SimpleChanges, signal } from '@angular/core';
 import { CommentModel } from '@platform-model/comment-class.model';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Dialog } from '@angular/cdk/dialog';
@@ -7,6 +7,7 @@ import { ActivatedRoute } from '@angular/router';
 import { ClassCommentService } from '@platform-service/class-comment.service';
 import { GlobalStatusService } from '@platform-service/global-status.service';
 import { DialogErrorAlertComponent } from '@shared-component/dialog-error-alert/dialog-error-alert.component';
+import { UserClassModel } from '@platform-model/user-class.model';
 
 @Component({
   selector: 'app-comment-class',
@@ -15,6 +16,7 @@ import { DialogErrorAlertComponent } from '@shared-component/dialog-error-alert/
 })
 export class CommentClassComponent implements OnInit, OnChanges{
 
+  @Input() userClassModel : UserClassModel | undefined = undefined;
   listCommentClassModel = signal<CommentModel[]>([]);
   idClass = signal<number>(0);
   openSidebar: boolean = false;
@@ -41,14 +43,19 @@ export class CommentClassComponent implements OnInit, OnChanges{
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    console.log(changes)
+    if(changes['userClassModel']){
+      this.idClass.set(this.userClassModel?.idClass || 0);
+      this.searchComment();
+    }
   }
 
   ngOnInit(): void {
+    this.idClass.set(this.userClassModel?.idClass || 0);
+    this.searchComment();
+  }
+
+  searchComment(){
     this.globalStatusService.setLoading(true)
-    this.activatedRoute.params.subscribe(params => {
-      this.idClass.set(params['idClass'] || 1);
-    });
     this.classCommentService.getFindByClass(this.idClass()).subscribe({
       next: data =>{
         if(data.status<=0){

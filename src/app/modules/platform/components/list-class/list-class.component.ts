@@ -38,9 +38,11 @@ export class ListClassComponent implements OnInit{
   ngOnInit(): void {
   }
 
-  onClickClass(idClass: number){
-    this.idClass.set(idClass);
-    this.changeSpecificClass.emit(idClass);
+  onClickClass(idClass: number, typeClass: string){
+    if (typeClass === 'CLASS' || typeClass === 'PROMO'){
+      this.idClass.set(idClass);
+      this.changeSpecificClass.emit(idClass);
+    }
   }
 
 }

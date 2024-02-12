@@ -18,8 +18,9 @@ export class MyDate{
     return `${day}/${month}/${year} ${hours}:${minutes}:${seconds}`;
   }
 
-  static convertToCustomDate(dateArray: number[] | Date | null): Date {
-    if (dateArray === null) {
+  static convertToCustomDate(dateArray: number[] | Date | null | undefined): Date {
+    console.log(dateArray);
+    if (dateArray === null || dateArray === undefined) {
       return new Date(2000, 0, 1);
     }
     if (dateArray instanceof Date) {
@@ -28,16 +29,56 @@ export class MyDate{
     const year = dateArray[0];
     const month = dateArray[1] - 1; // Los meses en JavaScript son base 0 (enero es 0)
     const day = dateArray[2];
-    const hours = dateArray[3];
-    const minutes = dateArray[4];
-    const seconds = dateArray[5];
-    const milliseconds = dateArray[6];
-
+    const hours = dateArray[3] || 0;
+    const minutes = dateArray[4] || 0;
+    const seconds = dateArray[5] || 0;
+    const milliseconds = dateArray[6] || 0;
+    console.log(year, month, day, hours, minutes, seconds, milliseconds);
+    console.log();
     return new Date(year, month, day, hours, minutes, seconds, milliseconds);
   }
 
-  static convertToCustomDateShort(dateArray: number[] | Date | null): Date {
-    if (dateArray === null) {
+  static converToCustomDateSpecial(dateArray: number[] | Date | null | undefined): string {
+
+    const fecha: Date = MyDate.convertToCustomDate(dateArray);
+    console.log(fecha);
+    const ahora = new Date();
+    const diferencia = ahora.getTime() - fecha.getTime();
+    console.log(diferencia);
+
+    // Cálculo de la antigüedad en minutos, horas, días, meses y años
+    const minutos = Math.floor(diferencia / (1000 * 60));
+    const horas = Math.floor(diferencia / (1000 * 60 * 60));
+    const dias = Math.floor(diferencia / (1000 * 60 * 60 * 24));
+    const meses = Math.floor(diferencia / (1000 * 60 * 60 * 24 * 30.44)); // Asumiendo un mes de 30.44 días
+    const anos = Math.floor(diferencia / (1000 * 60 * 60 * 24 * 365.25)); // Asumiendo un año de 365.25 días
+
+    // Elige la unidad de tiempo adecuada y construye la cadena de antigüedad
+    if (anos > 1) {
+      return `Hace ${anos} años`;
+    } else if (anos === 1) {
+      return 'Hace 1 año';
+    } else if (meses > 1) {
+      return `Hace ${meses} meses`;
+    } else if (meses === 1) {
+      return 'Hace 1 mes';
+    } else if (dias > 1) {
+      return `Hace ${dias} días`;
+    } else if (dias === 1) {
+      return 'Ayer';
+    } else if (horas > 1) {
+      return `Hace ${horas} horas`;
+    } else if (horas === 1) {
+      return 'Hace 1 hora';
+    } else if (minutos > 1) {
+      return `Hace ${minutos} minutos`;
+    } else {
+      return 'Hace un momento';
+    }
+  }
+
+  static convertToCustomDateShort(dateArray: number[] | Date | null | undefined): Date {
+    if (dateArray === null || dateArray === undefined) {
       return new Date(2000, 0, 1);
     }
     if (dateArray instanceof Date) {

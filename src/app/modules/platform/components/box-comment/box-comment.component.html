@@ -1,11 +1,11 @@
 <form action="#" [formGroup]="myCommentForm">
   <main class="box-comment-container" [class.display-none]="!isOpenSidebar">
     <section class="box-comment-header">
-      <div class="col-span-1 flex flex-row justify-around">
+      <div class="col-span-1">
         <button>
           <app-font-icon
             [colorIcon]="'sky'"
-            sizeIcon="'2xs'"
+            [sizeIcon]="'xs'"
             [optionIcon]="'bold'"
             [isBox]="false"
           ></app-font-icon>
@@ -13,7 +13,7 @@
         <button>
           <app-font-icon
             [colorIcon]="'sky'"
-            sizeIcon="'2xs'"
+            [sizeIcon]="'xs'"
             [optionIcon]="'italic'"
             [isBox]="false"
           ></app-font-icon>
@@ -21,17 +21,17 @@
         <button>
           <app-font-icon
             [colorIcon]="'sky'"
-            sizeIcon="'2xs'"
+            [sizeIcon]="'xs'"
             [optionIcon]="'underline'"
             [isBox]="false"
           ></app-font-icon>
         </button>
       </div>
-      <div class="col-span-1 flex flex-row justify-around">
+      <div class="col-span-1">
         <button>
           <app-font-icon
             [colorIcon]="'sky'"
-            sizeIcon="'2xs'"
+            [sizeIcon]="'xs'"
             [optionIcon]="'quote-left'"
             [isBox]="false"
           ></app-font-icon>
@@ -39,7 +39,7 @@
         <button>
           <app-font-icon
             [colorIcon]="'sky'"
-            sizeIcon="'2xs'"
+            [sizeIcon]="'xs'"
             [optionIcon]="'list-ol'"
             [isBox]="false"
           ></app-font-icon>
@@ -47,17 +47,17 @@
         <button>
           <app-font-icon
             [colorIcon]="'sky'"
-            sizeIcon="'2xs'"
+            [sizeIcon]="'xs'"
             [optionIcon]="'list-ul'"
             [isBox]="false"
           ></app-font-icon>
         </button>
       </div>
-      <div class="col-span-1 flex flex-row justify-around">
+      <div class="col-span-1">
         <button>
           <app-font-icon
             [colorIcon]="'sky'"
-            sizeIcon="'2xs'"
+            [sizeIcon]="'xs'"
             [optionIcon]="'code'"
             [isBox]="false"
           ></app-font-icon>
@@ -65,7 +65,7 @@
         <button>
           <app-font-icon
             [colorIcon]="'sky'"
-            sizeIcon="'2xs'"
+            [sizeIcon]="'xs'"
             [optionIcon]="'link'"
             [isBox]="false"
           ></app-font-icon>
@@ -73,21 +73,21 @@
         <button>
           <app-font-icon
             [colorIcon]="'sky'"
-            sizeIcon="'2xs'"
+            [sizeIcon]="'xs'"
             [optionIcon]="'image'"
             [isBox]="false"
           ></app-font-icon>
         </button>
       </div>
-      <div class="col-span-1 flex flex-row justify-around">
+      <div class="col-span-1">
         <button class="flex justify-center">
           <app-font-icon
             [colorIcon]="'sky'"
-            [sizeIcon]="'2xs'"
+            [sizeIcon]="'xs'"
             [optionIcon]="'eye'"
             [isBox]="false"
           ></app-font-icon>
-          <span class="basic-text">Preview</span>
+          <span class="basic-text my-auto">Preview</span>
         </button>
       </div>
     </section>
@@ -115,7 +115,7 @@
     </section>
     <section class="box-comment-footer">
       <div class="col-span-1 ml-2 flex flex-row justify-betwee items-center" [ngClass]="{'hidden' : idCommentRef != 0}">
-        <div class="flex flex-row justify-start space-x-2">
+        <div class="flex flex-row justify-start items-center space-x-2">
           <input
             type="radio"
             id="aport"
@@ -133,7 +133,7 @@
             value="QUESTION"
             formControlName="typeComment"
           />
-          <label for="question" class="basic-text">Question</label>
+          <label for="question" class="basic-text">Pregunta</label>
         </div>
       </div>
       <div class="col-span-1 flex justify-end">

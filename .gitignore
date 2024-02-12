@@ -30,13 +30,10 @@ yarn-error.log
 
 # Miscellaneous
 /.angular/cache
+/.vscode
 .sass-cache/
 /connect.lock
 /coverage
 /libpeerconnection.log
 testem.log
 /typings
-
-# System files
-.DS_Store
-Thumbs.db

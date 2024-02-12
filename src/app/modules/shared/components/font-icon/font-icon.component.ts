@@ -13,14 +13,16 @@ export class FontIconComponent implements OnInit {
   @Input() isDivider: boolean = false;
   @Input() isBox: boolean = true;
   @Input() optionIcon: string = '';
-  @Input() sizeIcon: string = 'xl';
+  @Input() sizeIcon: string = 'lg';
   @Input() colorIcon: Colors = 'gray';
   @Input() number: number = 0;
   sizeIconProp: SizeProp | undefined;
-  validSizes: SizeProp[] = ['xs', 'sm', 'lg', '1x', '2x', '3x', '4x', '5x', '6x', '7x', '8x', '9x', '10x'];
+  validSizes: SizeProp[] = ['xs', 'sm', 'lg', 'xl', '2xl'];
   mapBoxColors = COLORICONBOX;
   mapColors = COLORICON;
-  constructor() { }
+  constructor() {
+    this.sizeIconProp = this.convertToSizeProp(this.sizeIcon);
+  }
   ngOnInit(): void {
     this.sizeIconProp = this.convertToSizeProp(this.sizeIcon);
   }
@@ -78,6 +80,7 @@ export class FontIconComponent implements OnInit {
     if (this.validSizes.includes(sizeStr as SizeProp)) {
       return sizeStr as SizeProp; // Conversión segura porque sizeStr coincide con los valores válidos
     } else {
+      console.error(`El tamaño ${sizeStr} no es válido`);
       return undefined; // Si la cadena no coincide con ningún valor válido, se devuelve undefined
     }
   }

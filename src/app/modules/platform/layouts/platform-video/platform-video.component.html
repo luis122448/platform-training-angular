@@ -1,4 +1,4 @@
-<main class="h-full w-full flex flex-col justify-center overflow-hidden">
+<main class="h-full w-full flex flex-col justify-center overflow-hidden bg-slate-100 dark:bg-slate-900 dark:text-gray-400">
   <header class="h-[75px] w-full">
     <app-header></app-header>
   </header>
@@ -21,7 +21,7 @@
       <app-resources-class [userClassModel]="userClassModel()"></app-resources-class>
     </section>
     <section class="rigth-container">
-      <app-comment-class></app-comment-class>
+      <app-comment-class [userClassModel]="userClassModel()"></app-comment-class>
     </section>
   </main>
   <footer class="h-[75px] w-full">

@@ -5,15 +5,15 @@
 >
   <fa-icon
     [icon]="getIcon(optionIcon)"
-    class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2"
     [size]="sizeIconProp"
+    class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2"
   >
   </fa-icon>
   <div
-    class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 text-center text-xs font-bold"
+    class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2"
     *ngIf="!isDivider"
   >
-    {{ number }}
+    <p class="text-center text-[10px] font-normal">{{ number }}</p>
   </div>
 </div>
 <ng-template #noBoxIcon>
@@ -23,8 +23,8 @@
   >
     <fa-icon
       [icon]="getIcon(optionIcon)"
-      class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2"
       [size]="sizeIconProp"
+      class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2"
     >
     </fa-icon>
   </div>

@@ -6,7 +6,8 @@ export interface CommentModel {
   registerUser: number;
   username: string;
   urlPhoto: string;
-  registerDate: Date | Number[];
+  registerDate: Date | number[];
+  specialDate?: string;
   likeComment: number;
   dislikeComment: number;
   markdownContent: string;

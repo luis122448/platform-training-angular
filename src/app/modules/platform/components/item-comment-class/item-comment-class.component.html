@@ -28,7 +28,7 @@
       <strong class="text-inline line-clamp-1">{{
         commentClass?.username
       }}</strong>
-      <span class="text-inline">Hace 1 mes</span>
+      <span class="text-inline">{{ commentClass?.specialDate }}</span>
     </article>
     <article class="w-full max-h-72">
       <div>
@@ -53,7 +53,7 @@
         (registerComment)="registerComment($event)"
       ></app-box-comment>
     </article>
-    <article *ngIf="(commentClass?.commentModelList?.length || 0) > 0">
+    <article *ngIf="(commentClass?.commentModelList?.length || 0) > 0" class="flex flex-col space-y-4">
       <section
         class="sub-list-comment-container"
         *ngFor="let item of commentClass?.commentModelList"
@@ -81,12 +81,12 @@
             >
           </div>
         </section>
-        <section class="w-[300px] h-full flex flex-col justify-start">
+        <section class="w-[300px] h-full flex flex-col justify-start mt-0">
           <article class="w-full h-10">
             <strong class="text-inline line-clamp-1">{{
               item?.username
             }}</strong>
-            <span class="text-inline">Hace 1 mes</span>
+            <span class="text-inline">{{ commentClass?.specialDate }}</span>
           </article>
           <article class="w-full max-h-64">
             <markdown [data]="item?.markdownContent"></markdown>
@@ -104,7 +104,7 @@
         [colorBtn]="'transparent'"
         (click)="isOpenDetail = true"
       >
-        Responder
+        Ver mas
       </app-button-standard>
     </article>
   </section>

@@ -1,15 +1,16 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { CommentModel } from '../../models/comment-class.model';
 import { CommentService } from '@platform-service/comment.service';
 import { DialogErrorAlertComponent } from '@shared-component/dialog-error-alert/dialog-error-alert.component';
 import { Dialog } from '@angular/cdk/dialog';
+import { MyDate } from 'src/app/utils/date';
 
 @Component({
   selector: 'app-item-comment-class',
   templateUrl: './item-comment-class.component.html',
   styleUrls: ['./item-comment-class.component.scss'],
 })
-export class ItemCommentClassComponent {
+export class ItemCommentClassComponent implements OnInit{
   @Input() commentClass: CommentModel | undefined;
   @Input() idClass: number = 0;
   @Input() isOpenSidebar: boolean = false;
@@ -20,7 +21,21 @@ export class ItemCommentClassComponent {
   constructor(
     private commentService: CommentService,
     private dialog: Dialog
-  ) {}
+  ) {
+    if (this.commentClass) {
+      console.log(this.commentClass.registerDate);
+      this.commentClass.specialDate = MyDate.converToCustomDateSpecial(this.commentClass.registerDate);
+      console.log(this.commentClass.specialDate);
+    }
+  }
+  ngOnInit(): void {
+
+    if (this.commentClass) {
+      console.log(this.commentClass.registerDate);
+      this.commentClass.specialDate = MyDate.converToCustomDateSpecial(this.commentClass.registerDate);
+      console.log(this.commentClass.specialDate);
+    }
+  }
 
   openReply() {
     this.isOpenReply = true;
