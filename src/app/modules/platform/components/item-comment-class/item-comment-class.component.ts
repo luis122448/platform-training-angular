@@ -22,18 +22,11 @@ export class ItemCommentClassComponent implements OnInit{
     private commentService: CommentService,
     private dialog: Dialog
   ) {
-    if (this.commentClass) {
-      console.log(this.commentClass.registerDate);
-      this.commentClass.specialDate = MyDate.converToCustomDateSpecial(this.commentClass.registerDate);
-      console.log(this.commentClass.specialDate);
-    }
   }
-  ngOnInit(): void {
 
+  ngOnInit(): void {
     if (this.commentClass) {
-      console.log(this.commentClass.registerDate);
       this.commentClass.specialDate = MyDate.converToCustomDateSpecial(this.commentClass.registerDate);
-      console.log(this.commentClass.specialDate);
     }
   }
 

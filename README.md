@@ -1,27 +1,61 @@
-# PlatformTraining
+![Logo del Projecto](./resources/logo.png)
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.1.5.
+# Despliegue del Frontend de Platform Training
 
-## Development server
+Repositorio con el código fuente y los scripts necesarios para el despliegue de la Aplicacion Web del proyecto Platform Training.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+## Características
+- Modelado e implemantacion de interfaces con HTML, CSS y TailwindCSS.
+- Routing y Navegación con Angular Router.
+- Soporte de comentarios personalizados (markdown) con ngx-markdown
+- Soporte video y audio con ngx-embed-video y ngx-audio-player.
+- Consumo de servicios REST con HttpClient.
+- Patrón de diseño de módulos y lazy loading.
+- Configuracion con Nginx para el despliegue en producción.
+- Automatización del despliegue con Docker y Docker-Compose.
 
-## Code scaffolding
+## Repositorios Relacionados
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+### Repositorio Actual
+- [Platform-Training-Angular](https://github.com/luis122448/platform-training-angular)
 
-## Build
+### Repositorios Relacionados
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+Repositorio referido al BACKEND de la aplicación.
+- [Platform-Training-SpringBoot](https://github.com/luis122448/platform-training-springboot)
 
-## Running unit tests
+## Configuración del Entorno
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+1. **Clonar el Repositorio**
+    ```bash
+        git clone https://github.com/luis122448/platform-training-angular.git
+    ```
 
-## Running end-to-end tests
+2. **Ingresar al directorio del proyecto**
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+    ```bash
+        cd platform-training-springboot
+    ```
 
-## Further help
+3. **Ejecutar el script de instalación**
+  
+    ```bash
+        sudo bash dev-install.sh
+    ```
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+## Despliegue en Producción
+
+Para el despliegue en producción se ha utilizado Docker y Docker Compose, puede revisar el archivo docker-compose.yml para conocer los detalles de la configuración.
+Asimismo no se olvide de modificar las variables de entono, en asi archivo .env
+
+1. **Ejecutar el script de despliegue**
+  
+    ```bash
+        sudo bash deploy.sh
+    ```
+
+## Contribuciones
+Las contribuciones son bienvenidas. Siéntete libre de mejorar este proyecto, agregar nuevas características o corregir problemas identificados. Para contribuir, crea un Pull Request o abre un Issue.
+
+## Licencia
+Este proyecto está bajo la licencia MIT License.
