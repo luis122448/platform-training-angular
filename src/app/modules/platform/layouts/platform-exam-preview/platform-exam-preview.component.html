@@ -1,0 +1,22 @@
+<main class="h-full w-full flex flex-col justify-center overflow-hidden background-default">
+  <header class="h-[75px] w-full">
+    <app-header></app-header>
+  </header>
+  <main class="main-container background-default">
+    <app-preview-exam
+      [examModel]="examModel()"
+    ></app-preview-exam>
+  </main>
+  <footer class="h-[75px] w-full">
+    <app-footer></app-footer>
+  </footer>
+  <ngx-spinner
+    bdColor="rgba(0,0,0,0.5)"
+    size="large"
+    color="#ffffff"
+    type="ball-spin-clockwise"
+    [fullScreen]="true"
+  >
+    <p style="color: white">Loading...</p>
+  </ngx-spinner>
+</main>

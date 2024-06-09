@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from '@environment/environment';
 import { switchMap, tap } from 'rxjs/operators';
-import { ApiResponseAuth } from '@auth-model/auth.model';
+import { ApiResponseAuth, AuthVerify } from '@auth-model/auth.model';
 import { TokenService } from './token.service';
 
 @Injectable({
@@ -18,13 +18,13 @@ export class AuthService {
   ) { }
 
   postLogin(company: string, username: string, password: string){
-    return this.httpClient.post<ApiResponseAuth>(`${this.API_URL}${this.AUTH}/login`,{
+    return this.httpClient.post<ApiResponseAuth<any>>(`${this.API_URL}${this.AUTH}/login`,{
       company,
       username,
       password
     }).pipe(
       tap(data =>{
-        if(data.status === 1){
+        if(data.status === 1 && data.object?.token && data.object?.refreshToken){
           this.tokenService.saveToken(data.object.token)
           this.tokenService.saveRefreshToken(data.object.refreshToken)
         } else {
@@ -36,14 +36,14 @@ export class AuthService {
   }
 
   postVerifyCode(company: string, username: string, password: string, verifyCode: string){
-    return this.httpClient.post<ApiResponseAuth>(`${this.API_URL}${this.AUTH}/verify-code`,{
+    return this.httpClient.post<ApiResponseAuth<AuthVerify>>(`${this.API_URL}${this.AUTH}/verify-code`,{
       company,
       username,
       password,
       verifyCode
     }).pipe(
       tap(data =>{
-        if(data.status === 1){
+        if(data.status === 1 && data.object?.token && data.object?.refreshToken){
           this.tokenService.saveToken(data.object.token)
           this.tokenService.saveRefreshToken(data.object.refreshToken)
         } else {
@@ -55,10 +55,10 @@ export class AuthService {
   }
 
   postRefreshToken(refreshToken: string){
-    return this.httpClient.post<ApiResponseAuth>(`${this.API_URL}${this.AUTH}/refreshtoken`, {refreshToken})
+    return this.httpClient.post<ApiResponseAuth<AuthVerify>>(`${this.API_URL}${this.AUTH}/refreshtoken`, {refreshToken})
     .pipe(
       tap(data =>{
-        if(data.status === 1){
+        if(data.status === 1 && data.object?.token && data.object?.refreshToken){
           this.tokenService.saveToken(data.object.token)
           this.tokenService.saveRefreshToken(data.object.refreshToken)
         } else {

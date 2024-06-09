@@ -63,6 +63,11 @@ body {
   background: #555;
 }
 
+// Background
+.background-default {
+  @apply bg-slate-100 dark:bg-slate-900 dark:text-gray-400
+}
+
 // TextArea
 .textarea-default {
   @apply h-14 w-full rounded-sm border-2 border-slate-800 px-2 py-1 text-xs text-slate-800 placeholder-transparent
@@ -277,8 +282,25 @@ body {
   dark:bg-gray-700 dark:border-gray-600 dark:text-gray-400
 }
 
+.title-text {
+  @apply my-auto p-0 text-2xl text-slate-800 font-semibold leading-none
+  dark:text-gray-400
+}
+
+.sub-title-line {
+  @apply my-auto h-px border-[1px] border-dotted bg-gray-500 dark:bg-gray-700;
+}
+
+.sub-title-text {
+  @apply my-auto p-0 text-start text-lg text-slate-800 leading-none dark:text-gray-400
+}
+
+.sub-sub-title-text {
+  @apply my-auto p-0 text-start text-base text-slate-800 leading-none dark:text-gray-400
+}
+
 .basic-text {
-  @apply my-auto p-0 text-xs text-slate-800 font-semibold
+  @apply my-auto p-0 text-xs text-slate-800
   dark:text-gray-400 dark:font-normal
 }
 
@@ -289,6 +311,11 @@ body {
 
 .text-inline-sm {
   @apply m-0 p-0 text-sm text-slate-800
+  dark:text-gray-400
+}
+
+.text-inline-md {
+  @apply m-0 p-0 text-base text-slate-800
   dark:text-gray-400
 }
 
@@ -314,9 +341,13 @@ body {
 }
 
 .dialog-container {
-  @apply h-5/6 w-screen md:h-[800px] md:w-[800px] xl:w-[1000px] m-auto overflow-auto
-  bg-slate-100 px-8 py-8 space-y-6
-  dark:bg-slate-900 dark:text-gray-400;
+  @apply m-auto flex h-screen w-screen flex-col space-y-6 overflow-hidden bg-slate-100 px-8
+  py-8 dark:bg-slate-900
+  dark:text-gray-400
+  sm:h-screen
+  md:h-[700px] md:w-[800px]
+  lg:h-[700px]
+  xl:h-[800px] xl:w-[1000px];
 }
 
 .sub-dialog-container{
@@ -345,7 +376,7 @@ body {
   dark:bg-slate-900 dark:text-gray-400;
 }
 
-.default-container{
+.default-container {
   @apply m-auto bg-slate-100
   dark:bg-slate-900 dark:text-gray-400;
 }
@@ -398,3 +429,4 @@ body {
 .left-comment-container {
   @apply w-14 h-full flex flex-col justify-start space-y-2 items-center
 }
+

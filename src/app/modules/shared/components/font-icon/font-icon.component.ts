@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { IconDefinition, SizeProp } from '@fortawesome/fontawesome-svg-core';
-import { faCircle, faFlag, faHeart, faImage } from '@fortawesome/free-regular-svg-icons';
-import { faReply, faAnglesDown, faEye, faBold, faItalic,faUnderline,faCode,faLink, faQuoteLeft,faListUl, faListOl } from '@fortawesome/free-solid-svg-icons';
+import { faCircle, faFlag, faHeart, faImage, faClock, faEye, faEyeSlash } from '@fortawesome/free-regular-svg-icons';
+import { faReply, faAnglesDown, faBold, faItalic,faUnderline,faCode,faLink, faQuoteLeft,faListUl, faListOl } from '@fortawesome/free-solid-svg-icons';
 import { Colors, COLORICON, COLORICONBOX } from '../../models/color.model';
 
 @Component({
@@ -52,7 +52,9 @@ export class FontIconComponent implements OnInit {
         return faAnglesDown
       case 'eye':
         return faEye
-    case 'bold':
+      case 'eye-slash':
+        return faEyeSlash
+      case 'bold':
         return faBold
       case 'italic':
         return faItalic
@@ -62,7 +64,7 @@ export class FontIconComponent implements OnInit {
         return faCode
       case 'link':
         return faLink
-    case 'quote-left':
+      case 'quote-left':
         return faQuoteLeft
       case 'list-ul':
         return faListUl
@@ -70,6 +72,8 @@ export class FontIconComponent implements OnInit {
         return faListOl
       case 'image':
         return faImage
+      case 'clock':
+        return faClock
       default:
         return faCircle;
     }

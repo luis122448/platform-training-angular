@@ -11,9 +11,11 @@ import { DefaultValuesService } from '@auth-service/default-values.service';
 })
 export class ThemeSwitcherComponent{
 
+  @Input() openSidebar: boolean = false;
   faSun = faSun
   faMoon = faMoon
   isDark = true;
+  isOpenSidebar = false;
   renderer = inject(Renderer2);
   document = inject(DOCUMENT);
 
@@ -26,16 +28,22 @@ export class ThemeSwitcherComponent{
     this.onChange(false)
   }
 
+  ngOnChanges(changes: SimpleChanges): void {
+    if(changes['openSidebar']){
+      this.isOpenSidebar = changes['openSidebar'].currentValue;
+    }
+  }
+
   onChange(change: boolean){
     if(change){
       this.isDark = !this.isDark;
       this.defaultValuesService.setCookie('dark',this.isDark.toString())
     }
+
     if (this.isDark) {
       this.renderer.addClass(this.document.body.parentElement, 'dark');
     } else {
       this.renderer.removeClass(this.document.body.parentElement, 'dark');
     }
   }
-
 }

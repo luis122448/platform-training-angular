@@ -26,8 +26,8 @@ export class PlatformVideoComponent implements OnInit, OnChanges {
   listUserClassModel = signal<UserClassModel[]>([]);
   objectUserCourseModel = signal<UserCourseModel | undefined>(undefined);
   idCourse = signal<number>(0);
-  userCourseModel = signal<UserCourseModel | undefined>(undefined);
   idClass = signal<number>(0);
+  userCourseModel = signal<UserCourseModel | undefined>(undefined);
   userClassModel = signal<UserClassModel | undefined>(undefined);
   countClass = signal<number>(0);
   openSidebar = false;

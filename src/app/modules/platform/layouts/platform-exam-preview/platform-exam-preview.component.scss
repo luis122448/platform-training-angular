@@ -1,0 +1,27 @@
+.main-container {
+  width: 100%;
+  height: calc(100% - 150px);
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  margin: auto;
+}
+
+.body-container {
+  width: calc(100% - 160px);
+  height: 100%;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+@media (min-width: 1024px) {
+  .body-container {
+    width: calc(100% - 530px);
+  }
+}
+
+@media (min-width: 1280px) {
+  .body-container {
+    width: calc(100% - 600px);
+  }
+}

@@ -1,4 +1,6 @@
-<main class="h-full w-full flex flex-col justify-center overflow-hidden bg-slate-100 dark:bg-slate-900 dark:text-gray-400">
+<main
+  class="h-full w-full flex flex-col justify-center overflow-hidden background-default"
+>
   <header class="h-[75px] w-full">
     <app-header></app-header>
   </header>
@@ -18,13 +20,26 @@
         [countClass]="countClass()"
         (changeClass)="changeClass($event)"
       ></app-info-class>
-      <app-resources-class [userClassModel]="userClassModel()"></app-resources-class>
+      <app-resources-class
+        [userClassModel]="userClassModel()"
+      ></app-resources-class>
     </section>
     <section class="rigth-container">
-      <app-comment-class [userClassModel]="userClassModel()"></app-comment-class>
+      <app-comment-class
+        [userClassModel]="userClassModel()"
+      ></app-comment-class>
     </section>
   </main>
   <footer class="h-[75px] w-full">
     <app-footer></app-footer>
   </footer>
+  <ngx-spinner
+    bdColor="rgba(0,0,0,0.5)"
+    size="large"
+    color="#ffffff"
+    type="ball-spin-clockwise"
+    [fullScreen]="true"
+  >
+    <p style="color: white">Loading...</p>
+  </ngx-spinner>
 </main>

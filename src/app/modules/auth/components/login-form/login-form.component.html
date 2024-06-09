@@ -1,44 +1,72 @@
-<main>
-  <h1 class="text-inline my-12 text-center">Platform Training</h1>
+<main class="space-y-8">
+  <h3
+    class="text-center text-3xl font-extrabold leading-normal tracking-tight dark:text-gray-400 sm:text-4xl"
+  >
+    Platform <span class="text-sky-900 dark:text-sky-700">Training</span>
+  </h3>
   <div *ngIf="LoginIn; else elseBlock">
     <form
       [formGroup]="fromAuthLogin"
       novalidate
-      class="space-y-6"
+      class="flex w-full flex-col items-center justify-around space-y-2"
       (ngSubmit)="doLogin()"
     >
       <section>
-        <div class="relative">
+        <section>
+          <section class="relative flex w-[360px] justify-around md:w-[280px]">
+            <input
+              #nameInput
+              formControlName="company"
+              placeholder="Enter Company"
+              [class.input-invalid]="isInputInvalid('company')"
+              type="text"
+              class="input-login"
+            />
+            <button
+              type="button"
+              class="-z-1 absolute right-3 top-1/2 -translate-y-1/2"
+              (click)="nameInput.focus()"
+            >
+              <fa-icon [icon]="faAddressCard"></fa-icon>
+            </button>
+          </section>
+          <app-alert-standard [class.invisible]="!isInputInvalid('company')">
+            Company is required
+          </app-alert-standard>
+        </section>
+        <section class="relative flex w-[360px] justify-around md:w-[280px]">
           <input
             #nameInput
             formControlName="coduser"
-            placeholder="Enter email"
+            placeholder="Enter Code User"
+            [class.input-invalid]="isInputInvalid('coduser')"
             type="text"
             class="input-login"
           />
           <button
             type="button"
-            class="absolute right-2 p-2"
+            class="-z-1 absolute right-3 top-1/2 -translate-y-1/2"
             (click)="nameInput.focus()"
           >
             <fa-icon [icon]="faPen"></fa-icon>
           </button>
-        </div>
+        </section>
         <app-alert-standard [class.invisible]="!isInputInvalid('coduser')"
           >Especificar su Codigo de Usuario</app-alert-standard
         >
       </section>
       <section>
-        <div class="relative">
+        <div class="relative flex w-[360px] justify-around md:w-[280px]">
           <input
             formControlName="password"
             placeholder="Enter password"
+            [class.input-invalid]="isInputInvalid('password')"
             [type]="showPassword ? 'text' : 'password'"
             class="input-login"
           />
           <button
             type="button"
-            class="absolute right-2 p-2"
+            class="-z-1 absolute right-3 top-1/2 -translate-y-1/2"
             (click)="showPassword = !showPassword"
           >
             <fa-icon [icon]="showPassword ? faEye : faEyeSlash"></fa-icon>
@@ -49,7 +77,7 @@
         >
       </section>
       <section class="flex justify-center">
-        <app-button-standard typeBtn="submit" colorBtn="sky" optionBtn="go" >
+        <app-button-standard typeBtn="submit" colorBtn="sky" optionBtn="go">
           Login</app-button-standard
         >
       </section>
@@ -80,22 +108,31 @@
         </form>
       </section>
       <section>
-        <div class="flex justify-around space-x-3">
+        <div class="flex w-[360px] justify-around space-x-3 md:w-[280px]">
           <input
+            [id]="i"
             *ngFor="let i of [0, 1, 2, 3, 4, 5]"
             type="text"
             class="input-login"
             [(ngModel)]="verificationCode[i]"
             (input)="onCodeInputChange(i, $event)"
+            (keyup.enter)="doVerifyCode()"
+            (keyup.backspace)="onBackspace(i, $event)"
             maxlength="1"
           />
         </div>
-        <app-alert-standard [class.invisible]="!isInputInvalidVerify('verifyCode')"
+        <app-alert-standard
+          [class.invisible]="!isInputInvalidVerify('verifyCode')"
           >Digitar su Codigo de Seguridad</app-alert-standard
         >
       </section>
       <section class="flex justify-center">
-        <app-button-standard typeBtn="button" colorBtn="sky" (click)="doVerifyCode()" optionBtn="go">
+        <app-button-standard
+          typeBtn="button"
+          colorBtn="sky"
+          (click)="doVerifyCode()"
+          optionBtn="go"
+        >
           Login</app-button-standard
         >
       </section>

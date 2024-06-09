@@ -1,0 +1,48 @@
+<main class="grid grid-cols-2 gap-x-4 h-80 w-5/6 py-4 mx-auto background-default">
+  <section class="col-span-1 flex flex-row space-x-2 pt-4">
+    <article class="w-10 h-auto">
+      <img
+        loading="lazy"
+        class="w-10 h-10 rounded-full bg-cover"
+        [src]="userCourseModel?.urlIcon"
+        [alt]="userCourseModel?.title"
+      />
+    </article>
+    <article class="w-auto h-72 flex flex-col justify-start space-y-4">
+      <div class="w-auto h-auto">
+        <span class="title-text text-start">
+          {{ userCourseModel?.title }}
+        </span>
+      </div>
+      <div class="w-auto h-25">
+        <p class="basic-text">{{ userCourseModel?.description }}</p>
+      </div>
+      <div class="flex flex-col space-y-4 items-start lg:flex-row lg:justify-end lg:space-x-4 lg:space-y-0">
+        <app-button-standard
+          [typeBtn]="'submit'"
+          [optionBtn]="'go'"
+          [colorBtn]="'sky'"
+          (click)="onStartCourse()"
+        >
+          Iniciar Curso
+        </app-button-standard>
+        <app-button-standard
+          [typeBtn]="'submit'"
+          [optionBtn]="'go'"
+          [colorBtn]="'sky'"
+          (click)="onTakeExam()"
+        >
+          Presentar Examen
+        </app-button-standard>
+      </div>
+    </article>
+  </section>
+  <section class="col-span-1">
+    <img
+      loading="lazy"
+      class="h-full bg-cover"
+      [src]="userCourseModel?.urlBackground"
+      [alt]="userCourseModel?.title"
+    />
+  </section>
+</main>

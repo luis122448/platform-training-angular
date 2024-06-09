@@ -14,10 +14,14 @@ import { YouTubePlayerModule } from '@angular/youtube-player';
 import { ItemCommentClassComponent } from './components/item-comment-class/item-comment-class.component';
 import { MarkdownModule } from 'ngx-markdown';
 import { BoxCommentComponent } from './components/box-comment/box-comment.component';
-// import { FormsModule } from '@angular/forms';
-// import { ReactiveFormsModule } from '@angular/forms';
-// import { HttpClientModule } from '@angular/common/http';
-// import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { PlatformCourseComponent } from './layouts/platform-course/platform-course.component';
+import { InfoCourseComponent } from './components/info-course/info-course.component';
+import { ListClassPreviewComponent } from './components/list-class-preview/list-class-preview.component';
+import { PlatformExamComponent } from './layouts/platform-exam/platform-exam.component';
+import { PlatformExamPreviewComponent } from './layouts/platform-exam-preview/platform-exam-preview.component';
+import { PlatformExamResultComponent } from './layouts/platform-exam-result/platform-exam-result.component';
+import { PlatformQuestResultComponent } from './layouts/platform-quest-result/platform-quest-result.component';
+import { PreviewExamComponent } from './components/preview-exam/preview-exam.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +33,15 @@ import { BoxCommentComponent } from './components/box-comment/box-comment.compon
     VideoClassComponent,
     ItemListClassComponent,
     ItemCommentClassComponent,
-    BoxCommentComponent
+    BoxCommentComponent,
+    PlatformCourseComponent,
+    InfoCourseComponent,
+    ListClassPreviewComponent,
+    PlatformExamComponent,
+    PlatformExamPreviewComponent,
+    PlatformExamResultComponent,
+    PlatformQuestResultComponent,
+    PreviewExamComponent
   ],
   imports: [
     CommonModule,

@@ -1,5 +1,5 @@
 <section class="flex h-full w-full rounded-full">
-  <article class="relative">
+  <article [class.display-none]="!isOpenSidebar" class="relative">
     <input
       type="checkbox"
       name="themeSwitcher"
@@ -26,5 +26,31 @@
         ></fa-icon>
       </div>
     </label>
+    <!-- <span class="menu-sidebar-text" [class.display-none]="!openSidebar">{{ isDark ? 'Dark Mode' : 'Ligth Mode' }}</span> -->
+  </article>
+  <article [class.display-none]="isOpenSidebar" class="menu-sidebar">
+    <div
+      for="themeSwitcher"
+      [ngSwitch]="this.isDark"
+      class="menu-siderbar-icon"
+    >
+      <fa-icon
+        *ngSwitchCase="false"
+        [icon]="faSun"
+        [class.light]="!isDark"
+        class="icon-operac"
+        size="lg"
+      ></fa-icon>
+      <fa-icon
+        *ngSwitchCase="true"
+        [icon]="faMoon"
+        [class.dark-alternative]="isDark"
+        class="icon-operac"
+        size="lg"
+      ></fa-icon>
+    </div>
+    <span class="menu-sidebar-text" [class.display-none]="isOpenSidebar">{{
+      isDark ? "Dark Mode" : "Ligth Mode"
+    }}</span>
   </article>
 </section>

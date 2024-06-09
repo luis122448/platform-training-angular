@@ -7,6 +7,7 @@ export interface UserCourseModel {
   idCourse: number
   title: string
   description: string
+  markdownContent: string
   urlIcon: string
   urlLogo: string
   urlBackground: string
@@ -18,5 +19,4 @@ export interface UserCourseModel {
   requiredTime: number
   teacherModel: BasicTeacherModel
   userClassModelList: UserClassModel[]
-
 }

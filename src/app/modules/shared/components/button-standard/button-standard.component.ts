@@ -1,6 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { faSpinner,faFloppyDisk,faCalculator,faCircleLeft,faBroomBall,faCircleXmark,faNewspaper,
-faMagnifyingGlass,faQuestion,faTrashCan,faPenToSquare, IconDefinition, faPlus, faTrashArrowUp, faRightToBracket, faFileInvoice, faUpload, faDownload } from '@fortawesome/free-solid-svg-icons';
+faMagnifyingGlass,faQuestion,faTrashCan,faPenToSquare, IconDefinition, faPlus, faTrashArrowUp, faRightToBracket, faFileInvoice, faUpload, faDownload,
+faCircleRight} from '@fortawesome/free-solid-svg-icons';
 import { Colors, COLORS } from '../../models/color.model';
 import { ButtonOption } from '../../models/button-option.model';
 

@@ -1,0 +1,63 @@
+<main
+  class="grid grid-cols-5 gap-x-6 h-full max-w-[800px] w-5/6 py-4 mx-auto background-default"
+>
+  <section class="col-span-1 background-default">
+    <img
+      class="w-24 h-24 object-cover rounded-full"
+      [src]="
+        'https://w7.pngwing.com/pngs/745/105/png-transparent-pencil-and-paper-illustration-ssc-mts-exam-test-computer-icons-educational-entrance-examination-test-paper-miscellaneous-angle-text.png'
+      "
+      [alt]="'exam-image'"
+    />
+  </section>
+  <section
+    class="col-span-4 flex flex-col space-y-6 justify-start background-default"
+  >
+    <article class="w-full h-20">
+      <span class="title-text">{{ examModel?.title }}</span>
+      <div class="w-full h-10 flex flex-row space-x-2 items-center">
+        <img
+          class="w-8 h-8 rounded-full object-cover"
+          [src]="examModel?.courseUrlIcon"
+          [alt]="examModel?.courseTitle"
+        />
+        <div class="h-10 flex flex-col justify-around">
+          <span class="sub-title">{{ examModel?.courseTitle }}</span>
+        </div>
+      </div>
+    </article>
+    <article class="w-full h-auto flex flex-col space-y-4">
+      <hr class="sub-title-line" />
+      <span class="text-inline-md">{{ examModel?.description }}</span>
+    </article>
+    <article class="w-full h-auto flex flex-col space-y-4">
+      <span class="sub-title-text font-semibold">Presentar el examen</span>
+      <div>
+        <li class="text-inline-sm">
+          Puedes presentar el examen hasta
+          <span>{{ examModel?.maxAttempts }}</span> veces como quieras.
+        </li>
+        <li class="text-inline-sm">
+          El examen consta de
+          <span>{{ examModel?.numberQuestions }}</span> preguntas.
+        </li>
+        <li class="text-inline-sm">
+          Tienes <span>{{ examModel?.time }}</span> minutos para presentarlo.
+        </li>
+        <li class="text-inline-sm">
+          Necesitas <span>{{ examModel?.minScore }}</span> puntos para aprovar
+        </li>
+      </div>
+    </article>
+    <article class="flex flex-row justify-end">
+      <app-button-standard
+        [typeBtn]="'submit'"
+        [optionBtn]="'go'"
+        [colorBtn]="'sky'"
+        (click)="onStartExam()"
+      >
+        Comenzar Examen
+      </app-button-standard>
+    </article>
+  </section>
+</main>
