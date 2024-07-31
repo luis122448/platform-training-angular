@@ -15,6 +15,11 @@ const routes: Routes = [
     path: 'platform',
     loadChildren: () => import('./modules/platform/platform.module').then(m => m.PlatformModule)
   },
+  {
+    path: '**',
+    redirectTo: 'auth',
+    pathMatch: 'full'
+  }
 ];
 
 @NgModule({

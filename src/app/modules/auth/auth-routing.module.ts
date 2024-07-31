@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { AuthGuard } from '@guard/auth.guard';
 import { LoginComponent } from './pages/login/login.component';
+import { RedirectGuard } from '@guard/redirect.guard';
 
 const routes: Routes = [
   {
@@ -11,7 +11,7 @@ const routes: Routes = [
   },
   {
     path: 'login',
-    canActivate: [ AuthGuard ],
+    canActivate: [ RedirectGuard ],
     component: LoginComponent
   }
 ];

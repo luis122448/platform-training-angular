@@ -22,6 +22,9 @@ import { PlatformExamPreviewComponent } from './layouts/platform-exam-preview/pl
 import { PlatformExamResultComponent } from './layouts/platform-exam-result/platform-exam-result.component';
 import { PlatformQuestResultComponent } from './layouts/platform-quest-result/platform-quest-result.component';
 import { PreviewExamComponent } from './components/preview-exam/preview-exam.component';
+import { PlatformModuleComponent } from './layouts/platform-module/platform-module.component';
+import { InfoModuleComponent } from './components/info-module/info-module.component';
+import { PlatformHomeComponent } from './layouts/platform-home/platform-home.component';
 
 @NgModule({
   declarations: [
@@ -41,15 +44,16 @@ import { PreviewExamComponent } from './components/preview-exam/preview-exam.com
     PlatformExamPreviewComponent,
     PlatformExamResultComponent,
     PlatformQuestResultComponent,
-    PreviewExamComponent
+    PreviewExamComponent,
+    PlatformModuleComponent,
+    InfoModuleComponent,
+    PlatformHomeComponent
   ],
   imports: [
     CommonModule,
-    // HttpClientModule,
     PlatformRoutingModule,
     SharedModule,
     YouTubePlayerModule,
-    // BrowserAnimationsModule,
     MarkdownModule.forRoot()
   ]
 })

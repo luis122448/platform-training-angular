@@ -1,0 +1,16 @@
+<main
+  class="h-full w-full flex flex-col justify-center overflow-hidden background-default"
+>
+  <header class="h-[75px] w-full">
+    <app-header></app-header>
+  </header>
+  <main class="main-container background-default">
+    <app-info-module
+      class="body-container"
+      [userModuleModel]="userModuleModel()"
+    ></app-info-module>
+  </main>
+  <footer class="h-[75px] w-full">
+    <app-footer></app-footer>
+  </footer>
+</main>

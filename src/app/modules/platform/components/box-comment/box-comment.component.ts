@@ -2,7 +2,7 @@ import { Dialog } from '@angular/cdk/dialog';
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { BasicUserModel } from '@auth-model/auth.model';
+import { UserMetadataModel } from '@auth-model/metadata.model';
 import { DefaultValuesService } from '@auth-service/default-values.service';
 import { CommentModel } from '@platform-model/comment-class.model';
 import { CommentService } from '@platform-service/comment.service';
@@ -23,7 +23,7 @@ export class BoxCommentComponent{
   @Output() registerComment = new EventEmitter<CommentModel | undefined>();
 
   myCommentForm!: FormGroup;
-  basicUser: BasicUserModel | undefined;
+  basicUser: UserMetadataModel | undefined;
   isShowHelp: boolean = true;
 
   private buildForm() {
@@ -37,14 +37,13 @@ export class BoxCommentComponent{
 
   constructor(
     private formBuilder: FormBuilder,
-    private globalStatusService: GlobalStatusService,
     private defaultValuesServices: DefaultValuesService,
     private commentService: CommentService,
     private dialog: Dialog,
     private matSnackBar: MatSnackBar
   ) {
     this.buildForm();
-    this.basicUser = this.defaultValuesServices.getCookieValue('user')[0];
+    this.basicUser = this.defaultValuesServices.getCookieValue('metadata').user;
   }
 
   onClickComment() {
@@ -69,7 +68,6 @@ export class BoxCommentComponent{
       markdownContent: this.markdownContent?.value,
       commentModelList: [],
     };
-    this.globalStatusService.setLoading(true);
     this.commentService.postSave(this.idCommentRef, commentRegister).subscribe({
       next: (data) => {
         if (data.status <= 0) {
@@ -86,14 +84,12 @@ export class BoxCommentComponent{
           this.isShowHelp = true;
           this.registerComment.emit(commentRegister);
         }
-        this.globalStatusService.setLoading(false);
       },
       error: (err) => {
         this.dialog.open(DialogErrorAlertComponent, {
           width: '400px',
           data: err.error,
         });
-        this.globalStatusService.setLoading(false);
       },
     });
   }

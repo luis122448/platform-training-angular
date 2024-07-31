@@ -1,8 +1,8 @@
 <section
-  class="h-full w-full flex flex-row justify-between items-center border-gray-200 dark:border-gray-800 bg-white px-4 dark:bg-gray-900"
+  class="h-[75px] w-full flex flex-row justify-between items-center header-default"
 >
-  <div class="flex items-center">
-    <a href="#" class="flex items-center">
+  <section class="flex items-center">
+    <a [routerLink]="['/platform']" class="flex items-center">
       <img
         src="../../../../../../assets/icons/logo.png"
         class="mr-3 h-8 w-8 rounded-full"
@@ -13,8 +13,8 @@
         >Platform Training</span
       >
     </a>
-  </div>
-  <div class="flex items-center">
+  </section>
+  <section class="flex items-center">
     <nav class="h-full w-auto">
       <div
         class="hidden w-full items-center justify-between md:order-1 md:flex md:w-auto"
@@ -39,7 +39,17 @@
         </ul>
       </div>
     </nav>
-  </div>
+  </section>
+  <section>
+    <button type="button" (click)="openDialogSesion()"
+      cdkOverlayOrigin #subMenuOverlay="cdkOverlayOrigin"
+      class="menu-sidebar">
+        <div class="menu-siderbar-icon">
+          <fa-icon class="icon-operac" [icon]="faSquareXmark" size="lg"></fa-icon>
+        </div>
+        <span class="menu-sidebar-text">Sign off</span>
+    </button>
+  </section>
   <div class="flex">
     <app-theme-switcher></app-theme-switcher>
   </div>

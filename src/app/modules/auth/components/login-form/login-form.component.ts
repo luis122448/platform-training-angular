@@ -12,6 +12,7 @@ import { GlobalStatusService } from 'src/app/modules/platform/services/global-st
 import { faAddressCard, faPen } from '@fortawesome/free-solid-svg-icons';
 import { faEye, faEyeSlash } from '@fortawesome/free-regular-svg-icons';
 import { DefaultValuesService } from '@auth-service/default-values.service';
+import { MetadataModel } from '@auth-model/metadata.model';
 
 @Component({
   selector: 'app-login-form',
@@ -95,7 +96,7 @@ export class LoginFormComponent {
       )
       .subscribe({
         next: async (data) => {
-          if (data.status <= 0) {
+          if (data.status < 0) {
             this.dialog.open(DialogErrorAlertComponent, {
               width: '400px',
               data: data,
@@ -112,23 +113,13 @@ export class LoginFormComponent {
             });
           }
           else {
-            await this.onUploadDefaultValues()
+            this.defaultValueService.setLocalStorageValue('metadata', data.metadata);
             this.router.navigate(['/platform']);
             this.matSnackBar.openFromComponent(
               MatsnackbarSuccessComponent,
               MatSnackBarSuccessConfig
             );
           }
-        },
-        error: (err) => {
-          this.dialog.open(DialogErrorAlertComponent, {
-            width: '400px',
-            data: err.error,
-          });
-          this.globalStatusService.setLoading(false);
-        },
-        complete: () => {
-          this.globalStatusService.setLoading(false);
         }
       });
   }
@@ -148,7 +139,6 @@ export class LoginFormComponent {
       .postVerifyCode(
         this.company?.value,
         this.coduser?.value,
-        this.password?.value,
         this.verifyCode?.value
       )
       .subscribe({
@@ -160,24 +150,14 @@ export class LoginFormComponent {
             });
           }
           if (data.status === 1) {
-            await this.onUploadDefaultValues()
+            this.defaultValueService.setLocalStorageValue('metadata', data.metadata);
             this.router.navigate(['/platform']);
             this.matSnackBar.openFromComponent(
               MatsnackbarSuccessComponent,
               MatSnackBarSuccessConfig
             );
           }
-        },
-        error: (err) => {
-          this.dialog.open(DialogErrorAlertComponent, {
-            width: '400px',
-            data: err.error
-          });
-          this.globalStatusService.setLoading(false);
-        },
-        complete: () => {
-          this.globalStatusService.setLoading(false);
-        },
+        }
       });
   }
 
@@ -202,10 +182,6 @@ export class LoginFormComponent {
         previousInput.focus();
       }
     }
-  }
-
-  async onUploadDefaultValues() {
-    await null;
   }
 
   get company() {

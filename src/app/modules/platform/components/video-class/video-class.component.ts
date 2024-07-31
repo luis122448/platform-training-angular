@@ -1,9 +1,6 @@
 import { Component, OnInit, OnDestroy, ViewChild, ElementRef, signal, Input, ChangeDetectorRef } from '@angular/core';
 import { GlobalStatusService } from '../../services/global-status.service';
 import { UserClassModel, ViewInfoClassModel } from '../../models/user-class.model';
-import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
-import { DatasourceClassService } from '../../services/datasource-class.service';
-import { ActivatedRoute } from '@angular/router';
 import { UserClassService } from '@platform-service/user-class.service';
 import { Dialog } from '@angular/cdk/dialog';
 import { DialogErrorAlertComponent } from '@shared-component/dialog-error-alert/dialog-error-alert.component';

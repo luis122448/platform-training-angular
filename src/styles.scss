@@ -1,5 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
 @use "@angular/material" as mat;
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -292,11 +293,11 @@ body {
 }
 
 .sub-title-text {
-  @apply my-auto p-0 text-start text-lg text-slate-800 leading-none dark:text-gray-400
+  @apply my-auto py-1 text-start text-lg font-semibold text-slate-800 leading-none dark:text-gray-400
 }
 
 .sub-sub-title-text {
-  @apply my-auto p-0 text-start text-base text-slate-800 leading-none dark:text-gray-400
+  @apply my-auto p-0 text-start text-base font-semibold text-slate-800 leading-none dark:text-gray-400
 }
 
 .basic-text {
@@ -428,5 +429,10 @@ body {
 
 .left-comment-container {
   @apply w-14 h-full flex flex-col justify-start space-y-2 items-center
+}
+
+
+.container-item-default {
+  @apply flex justify-start rounded-md h-[80px] w-full bg-blue-200 dark:bg-slate-800 outline outline-sky-700
 }
 

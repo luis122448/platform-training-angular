@@ -21,7 +21,6 @@ export class PlatformCourseComponent implements OnInit{
   idModule = signal<number>(0);
   idCourse = signal<number>(0);
   constructor(
-    private globalStatusService: GlobalStatusService,
     private userCourseService: UserCourseService,
     private activatedRoute: ActivatedRoute,
     private router: Router,
@@ -29,7 +28,6 @@ export class PlatformCourseComponent implements OnInit{
   ) { }
 
   ngOnInit(): void {
-    this.globalStatusService.setLoading(true);
     this.activatedRoute.params.subscribe((params) => {
       this.idModule.set(params['idModule'] || 1);
       this.idCourse.set(params['idCourse'] || 1);
@@ -50,10 +48,6 @@ export class PlatformCourseComponent implements OnInit{
           width: '400px',
           data: err.error,
         });
-        this.globalStatusService.setLoading(false);
-      },
-      complete: () => {
-        this.globalStatusService.setLoading(false);
       }
     });
   }

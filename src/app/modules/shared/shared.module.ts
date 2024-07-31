@@ -19,6 +19,9 @@ import { ButtonOperacComponent } from './components/button-operac/button-operac.
 import { DialogQuestionComponent } from './components/dialog-question/dialog-question.component';
 import { CdkModule } from './cdk/cdk.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { RouterLink } from '@angular/router';
+import { LazyLoadImageComponent } from './components/lazy-load-image/lazy-load-image.component';
+import { RatingCountComponent } from './components/rating-count/rating-count.component';
 
 @NgModule({
   declarations: [
@@ -37,6 +40,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     MatsnackbarMessageComponent,
     ButtonOperacComponent,
     DialogQuestionComponent,
+    LazyLoadImageComponent,
+    RatingCountComponent,
   ],
   imports: [
     CommonModule,
@@ -44,7 +49,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     ReactiveFormsModule,
     FontAwesomeModule,
     MaterialModule,
-    CdkModule
+    CdkModule,
+    RouterLink
   ],
   exports: [
     FormsModule,
@@ -66,7 +72,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     ButtonQuestionComponent,
     MatsnackbarMessageComponent,
     ButtonOperacComponent,
-    DialogQuestionComponent
+    DialogQuestionComponent,
+    LazyLoadImageComponent
   ]
 })
 export class SharedModule { }

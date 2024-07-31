@@ -32,12 +32,12 @@
     </div>
     <div *ngSwitchDefault></div>
   </section>
-  <span class="menu-sidebar-text" [class.display-none-left]="!isOpenSidebar">{{
+  <span class="menu-sidebar-text" [class.display-none]="!isOpenSidebar">{{
     objectUserClassModel?.title
   }}</span>
 </section>
 <ng-template #isDividerSection>
-  <section class="menu-sidebar-no-hover">
+  <section class="menu-sidebar">
     <article class="menu-sidebar-icon">
       <app-font-icon
         [optionIcon]="'flag'"
@@ -46,10 +46,8 @@
         [number]="objectUserClassModel?.position || 0"
       ></app-font-icon>
     </article>
-    <span
-      class="menu-sidebar-text"
-      [class.display-none-left]="!isOpenSidebar"
-      >{{ objectUserClassModel?.title }}</span
-    >
+    <span class="menu-sidebar-text" [class.display-none]="!isOpenSidebar">{{
+      objectUserClassModel?.title
+    }}</span>
   </section>
 </ng-template>

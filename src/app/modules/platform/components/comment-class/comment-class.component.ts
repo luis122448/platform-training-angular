@@ -36,7 +36,6 @@ export class CommentClassComponent implements OnInit, OnChanges{
     private dialog: Dialog,
     private matSnackBar: MatSnackBar,
     private activatedRoute: ActivatedRoute,
-    private globalStatusService: GlobalStatusService,
     private classCommentService: ClassCommentService,
     ) {
     this.buildForm();
@@ -55,7 +54,6 @@ export class CommentClassComponent implements OnInit, OnChanges{
   }
 
   searchComment(){
-    this.globalStatusService.setLoading(true)
     this.classCommentService.getFindByClass(this.idClass()).subscribe({
       next: data =>{
         if(data.status<=0){
@@ -65,14 +63,12 @@ export class CommentClassComponent implements OnInit, OnChanges{
           })
         }
         this.listCommentClassModel.set(data.list);
-        this.globalStatusService.setLoading(false)
       },
       error: err => {
         this.dialog.open(DialogErrorAlertComponent, {
           width: '400px',
           data: err.error
         })
-        this.globalStatusService.setLoading(false)
       }
     })
 

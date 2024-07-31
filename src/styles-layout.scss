@@ -1,10 +1,57 @@
-// Layout Menu
+// Platform Layout
 .main-container {
-  @apply m-auto h-screen flex-col justify-around bg-slate-100 dark:bg-slate-900 dark:text-gray-400;
+  width: 100%;
+  height: calc(100% - 150px);
+  justify-content: space-around;
+  margin: auto;
+  background-color: #f0f4f8;
+  color: #2d3748;
+  margin: auto;
+  justify-content: space-around;
+  display: flex;
+  flex-direction: row;
+}
+
+.main-container {
+  @apply bg-slate-100 dark:bg-slate-900 dark:text-gray-400;
+}
+
+.dark .main-container {
+  background-color: #1a202c;
+  color: #cbd5e0;
+}
+
+.body-container {
+  width: calc(100% - 80px);
+  height: 100%;
+  overflow-x: hidden;
+  overflow-y: auto;
+  margin: auto;
+  padding-top: 10px;
 }
 
 .body-container{
   @apply bg-slate-100 dark:bg-slate-900 dark:text-gray-400;
+}
+
+@media (min-width: 1024px) {
+  .body-container {
+    width: calc(100% - 450px);
+  }
+}
+
+@media (min-width: 1280px) {
+  .body-container {
+    width: calc(100% - 520px);
+  }
+}
+
+.footer-default {
+  @apply my-auto bg-slate-100 py-2 px-4 dark:bg-slate-900 dark:text-gray-400;
+}
+
+.header-default {
+  @apply my-auto bg-slate-100 py-2 px-4 dark:bg-slate-900 dark:text-gray-400;
 }
 
 .sub-main-container {
@@ -25,8 +72,8 @@
 .rigth-container {
   @apply z-10 h-full w-[80px]
   lg:w-[200px]
-  xl:w-[250px]
-  2xl:w-[250px];
+  xl:w-[400px]
+  2xl:w-[400px];
 }
 
 .sidebar-left {
@@ -35,7 +82,7 @@
   transition-all duration-500 dark:bg-slate-900
   dark:text-slate-400 hover:max-lg:absolute
   hover:max-lg:left-0
-  hover:max-lg:w-[200px]
+  hover:max-lg:w-[250px]
   lg:w-full;
 }
 
@@ -45,7 +92,7 @@
   transition-all duration-500 dark:bg-slate-900
   dark:text-slate-400 hover:max-lg:absolute
   hover:max-lg:right-0
-  hover:max-lg:w-[200px]
+  hover:max-lg:w-[400px]
   lg:w-full;
 }
 
@@ -87,7 +134,7 @@
 }
 
 .menu-sidebar-text {
-  @apply my-auto font-semibold dark:font-normal col-span-4 whitespace-nowrap text-xs text-slate-900 dark:text-gray-200;
+  @apply my-auto font-semibold dark:font-normal col-span-4 whitespace-normal text-xs text-slate-900 dark:text-gray-200;
 }
 
 .display-none {
@@ -96,8 +143,4 @@
   }
   transition: all;
   animation-duration: 500ms;
-}
-
-.footer-default {
-  @apply my-auto bg-slate-100 py-2 px-4 dark:bg-slate-900 dark:text-gray-400;
 }

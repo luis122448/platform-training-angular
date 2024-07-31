@@ -1,0 +1,44 @@
+<main
+  class="h-full w-full flex flex-col justify-center overflow-auto background-default"
+>
+  <header class="h-[75px] w-full">
+    <app-header></app-header>
+  </header>
+  <main class="main-container background-default">
+    <div class="body-container grid grid-cols-2 lg:grid-cols-3 gap-x-4 gap-y-8 px-12 py-10">
+      <div
+        *ngFor="let item of listModules()"
+        class="col-span-1"
+      >
+        <section
+          class="bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 flex flex-col space-y-2 w-48 2xl:w-64 h-72 2xl:h-64"
+        >
+          <article class="w-48 2xl:w-64 h-auto">
+            <a [routerLink]="['/platform/module', item.idModule]" class="block">
+              <img
+                [src]="item?.urlBackground"
+                [alt]="item?.title"
+                class="w-48 2xl:w-64 h-auto object-contain rounded-lg"
+              />
+            </a>
+          </article>
+          <article class="flex flex-col space-y-2 px-2">
+            <a [routerLink]="['/platform/module', item.idModule]">
+              <h5
+                class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white"
+              >
+                {{ item?.title }}
+              </h5>
+            </a>
+            <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
+              {{ item?.description }}
+            </p>
+          </article>
+        </section>
+      </div>
+    </div>
+  </main>
+  <footer class="h-[75px] w-full">
+    <app-footer></app-footer>
+  </footer>
+</main>

@@ -1,9 +1,9 @@
-<main class="grid grid-cols-2 gap-x-4 h-80 w-5/6 py-4 mx-auto background-default">
+<main class="px-4 grid grid-cols-2 gap-x-4 h-80 py-4 mx-auto background-default">
   <section class="col-span-1 flex flex-row space-x-2 pt-4">
     <article class="w-10 h-auto">
       <img
         loading="lazy"
-        class="w-10 h-10 rounded-full bg-cover"
+        class="w-10 h-10 rounded-full object-cover"
         [src]="userCourseModel?.urlIcon"
         [alt]="userCourseModel?.title"
       />
@@ -14,10 +14,10 @@
           {{ userCourseModel?.title }}
         </span>
       </div>
-      <div class="w-auto h-25">
-        <p class="basic-text">{{ userCourseModel?.description }}</p>
+      <div class="h-24 w-64">
+        <p class="basic-text whitespace-normal">{{ userCourseModel?.description }}</p>
       </div>
-      <div class="flex flex-col space-y-4 items-start lg:flex-row lg:justify-end lg:space-x-4 lg:space-y-0">
+      <div class="flex flex-col space-y-2 items-start lg:flex-row lg:justify-end lg:space-x-4 lg:space-y-0">
         <app-button-standard
           [typeBtn]="'submit'"
           [optionBtn]="'go'"
@@ -37,10 +37,10 @@
       </div>
     </article>
   </section>
-  <section class="col-span-1">
+  <section class="col-span-1 flex flex-col justify-around">
     <img
       loading="lazy"
-      class="h-full bg-cover"
+      class="h-72 w-auto bg-cover"
       [src]="userCourseModel?.urlBackground"
       [alt]="userCourseModel?.title"
     />

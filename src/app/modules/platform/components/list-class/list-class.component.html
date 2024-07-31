@@ -5,14 +5,14 @@
   [class.sidebar-left-open]="openSidebar"
 >
   <section class="menu-sidebar">
-    <div class="menu-sidebar-icon h-10 w-10">
+    <article class="menu-sidebar-icon h-10 w-10">
       <img
         [src]="userCourseModel?.urlIcon"
         [alt]="userCourseModel?.title"
         class="object-fill h-10 w-10 rounded-full"
       />
-    </div>
-    <span class="menu-sidebar-text" [class.display-none-left]="!openSidebar">
+    </article>
+    <span class="menu-sidebar-text" [class.display-none]="!openSidebar">
       {{ userCourseModel?.title }}
     </span>
   </section>
@@ -46,14 +46,14 @@
     </ol>
   </section>
   <section class="menu-sidebar">
-    <div class="menu-sidebar-icon h-10 w-10">
+    <article class="menu-sidebar-icon h-10 w-10">
       <img
         [src]="userCourseModel?.urlIcon"
         [alt]="userCourseModel?.title"
         class="object-fill h-10 w-10 rounded-full"
       />
-    </div>
-    <span class="menu-sidebar-text" [class.display-none-left]="!openSidebar">
+    </article>
+    <span class="menu-sidebar-text" [class.display-none]="!openSidebar">
       {{ userCourseModel?.title }}
     </span>
   </section>

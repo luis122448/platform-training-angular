@@ -3,7 +3,6 @@ import { Component, OnInit, signal } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ExamModel } from '@platform-model/exam-model';
 import { ExamService } from '@platform-service/exam.service';
-import { GlobalStatusService } from '@platform-service/global-status.service';
 import { DialogErrorAlertComponent } from '@shared-component/dialog-error-alert/dialog-error-alert.component';
 
 @Component({
@@ -18,8 +17,6 @@ export class PlatformExamPreviewComponent implements OnInit {
   examModel = signal<ExamModel | undefined>(undefined);
 
   constructor(
-    private globalStatusService: GlobalStatusService,
-    private router: Router,
     private activatedRoute: ActivatedRoute,
     private examService: ExamService,
     private dialog: Dialog,
@@ -30,7 +27,6 @@ export class PlatformExamPreviewComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.globalStatusService.setLoading(true);
     this.examService.getByIdCourse(this.idCourse()).subscribe({
       next: (data) => {
         if (data.status <= 0) {
@@ -47,10 +43,6 @@ export class PlatformExamPreviewComponent implements OnInit {
           width: '400px',
           data: err.error,
         });
-        this.globalStatusService.setLoading(false);
-      },
-      complete: () => {
-        this.globalStatusService.setLoading(false);
       }
     });
   }

@@ -1,26 +1,19 @@
-<main class="h-full w-full flex flex-col justify-center overflow-hidden background-default">
+<main
+  class="h-full w-full flex flex-col justify-center overflow-hidden background-default"
+>
   <header class="h-[75px] w-full">
     <app-header></app-header>
   </header>
   <main class="main-container background-default">
-    <app-info-course
-      [userCourseModel]="userCourseModel()"
-    ></app-info-course>
-    <app-list-class-preview
-      [userCourseModel]="userCourseModel()"
-      [listUserClassModel]="listUserClassModel()"
-    ></app-list-class-preview>
+    <div class="body-container">
+      <app-info-course [userCourseModel]="userCourseModel()"></app-info-course>
+      <app-list-class-preview
+        [userCourseModel]="userCourseModel()"
+        [listUserClassModel]="listUserClassModel()"
+      ></app-list-class-preview>
+    </div>
   </main>
   <footer class="h-[75px] w-full">
     <app-footer></app-footer>
   </footer>
-  <ngx-spinner
-    bdColor="rgba(0,0,0,0.5)"
-    size="large"
-    color="#ffffff"
-    type="ball-spin-clockwise"
-    [fullScreen]="true"
-  >
-    <p style="color: white">Loading...</p>
-  </ngx-spinner>
 </main>

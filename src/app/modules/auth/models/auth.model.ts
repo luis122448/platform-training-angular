@@ -1,30 +1,30 @@
+import { MetadataModel } from "./metadata.model"
+
 export interface ApiResponseAuth<T>{
   status: number,
   message: string,
   logMessage?: string
   logUser?: String
   logTime?: Date | number[],
-  object: T | null
+  object: T | null,
+  metadata: MetadataModel | null
 }
 
-export interface Auth{
+export interface AuthRequestUser{
   company: string,
   coduser: string,
   password: string
 }
 
-export interface AuthVerify{
+export interface AuthRequestCode{
   company: string,
   coduser: string,
-  role: string,
-  token: string,
-  refreshToken: string
+  verifyCode: string
 }
 
-export interface GenericAuth{
-  company?: string,
-  coduser?: string,
-  code?: string
+export interface AuthRespnseObject{
+  username?: string,
+  role?: string,
   token?: string,
   refreshToken?: string
 }

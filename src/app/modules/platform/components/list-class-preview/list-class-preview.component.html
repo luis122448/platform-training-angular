@@ -1,56 +1,62 @@
-<main class="w-5/6 h-full mx-auto py-4 flex flex-col background-default space-y-4">
+<main
+  class="h-full mx-auto py-4 px-4 flex flex-col background-default space-y-4"
+>
   <section class="title-text text-center">
     {{ userCourseModel?.title }}
   </section>
-  <section class="flex flex-col space-y-2">
+  <section class="flex flex-col space-y-3">
     <div *ngFor="let item of listUserClassModel">
       <section
-        class=""
+        [routerLink]="['/platform/class', item.idClass]"
+        class="container-item-default"
         *ngIf="item?.typeClass !== 'TAG'; else isDividerSection"
       >
-        <article
-          class="flex justify-start space-x-4 rounded-md h-16 w-full boder-2 bg-gray-300 dark:bg-slate-800"
         >
-          <article class="w-28 h-16">
-            <img
-              loading="lazy"
-              class="rounded-md w-28 h-16 bg-cover"
-              [src]="item?.urlImage"
-              [alt]="item?.title"
-            />
-          </article>
-          <article
-            class="h-16 w-full relative flex flex-col justify-start py-1 px-1"
-          >
-            <div class="h-8 w-full my-auto">
-              <span class="sub-sub-title-text">{{ item?.title }}</span>
-            </div>
-            <div class="h-auto w-full my-auto flex flex-row">
-              <app-font-icon
-                [optionIcon]="'clock'"
-                [colorIcon]="'gray'"
-                [sizeIcon]="'sm'"
-                [isBox]="false"
-              ></app-font-icon>
-              <span class="basic-text block">{{ "07:21 min" }}</span>
-            </div>
-            <div class="absolute top-1 right-4" *ngIf="item?.finalized">
-              <app-font-icon
-                [optionIcon]="'eye-slash'"
-                [colorIcon]="'gray'"
-                [sizeIcon]="'sm'"
-                [isBox]="false"
-              ></app-font-icon>
-            </div>
-            <div class="absolute top-1 right-4" *ngIf="!item?.finalized">
-              <app-font-icon
-                [optionIcon]="'eye'"
-                [colorIcon]="'gray'"
-                [sizeIcon]="'sm'"
-                [isBox]="false"
-              ></app-font-icon>
-            </div>
-          </article>
+        <article class="w-auto h-[80px]">
+          <img
+            loading="lazy"
+            class="rounded-md w-[136px] h-[80px] object-cover"
+            [src]="item?.urlImage"
+            [alt]="item?.title"
+          />
+        </article>
+        <article
+          class="h-[80px] w-full relative flex flex-col justify-start pt-2 pb-1"
+        >
+          <div class="h-8 w-full my-auto px-4">
+            <span class="sub-sub-title-text">{{ item?.title }}</span>
+          </div>
+          <div class="h-auto w-full my-auto flex flex-row px-4">
+            <app-font-icon
+              [optionIcon]="'clock'"
+              [colorIcon]="'gray'"
+              [sizeIcon]="'sm'"
+              [isBox]="false"
+            ></app-font-icon>
+            <span class="basic-text block">{{ "07:21 min" }}</span>
+          </div>
+          <div class="absolute top-1 right-4" *ngIf="item?.finalized">
+            <app-font-icon
+              [optionIcon]="'eye-slash'"
+              [colorIcon]="'gray'"
+              [sizeIcon]="'sm'"
+              [isBox]="false"
+            ></app-font-icon>
+          </div>
+          <div class="absolute top-1 right-4" *ngIf="!item?.finalized">
+            <app-font-icon
+              [optionIcon]="'eye'"
+              [colorIcon]="'gray'"
+              [sizeIcon]="'sm'"
+              [isBox]="false"
+            ></app-font-icon>
+          </div>
+          <div class="w-full h-2 mt-2 bg-gray-200 rounded-r-md">
+            <div
+              class="h-2 bg-blue-500 rounded-r-md"
+              [style.width.%]="item.advance"
+            ></div>
+          </div>
         </article>
       </section>
       <ng-template #isDividerSection>
