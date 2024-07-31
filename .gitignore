@@ -43,6 +43,7 @@ Thumbs.db
 
 # Angular Files
 # Directorios
+/.angular
 node_modules/
 dist/
 .tmp/
