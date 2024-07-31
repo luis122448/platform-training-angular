@@ -3,6 +3,12 @@ FROM node:21-alpine AS build
 
 WORKDIR /home/app
 
+# Set build arguments
+ARG API_URL
+
+# Set environment variables for the build process
+ENV API_URL: $API_URL
+
 # Copy the package.json and package-lock.json files to the container
 COPY ./angular.json /home/app
 COPY ./package*.json /home/app
@@ -13,6 +19,9 @@ RUN npm install
 
 # Copy the source code to the container
 COPY ./src /home/app/src
+
+# Replace environment placeholders
+RUN sed -i "s#\\[API_URL\\]#$API_URL#g" /home/app/src/environments/environment.ts
 
 RUN npm run build --prod
 
