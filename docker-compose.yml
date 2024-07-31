@@ -1,11 +1,14 @@
-version: '3.8'  # Puedes ajustar la versión según la que desees usar
-
 services:
-  postgres:
+  platform-training-angular:
     container_name: platform-training-angular
+    env_file:
+      - ./.env
     build:
       context: .
       dockerfile: Dockerfile
     ports:
-      - "80:80"
+      - "4201:4201"
 
+networks:
+  platform-training-net:
+    external: true

@@ -29,11 +29,49 @@ yarn-error.log
 .history/*
 
 # Miscellaneous
-.angular/cache
-.vscode
+/.angular/cache
 .sass-cache/
 /connect.lock
 /coverage
 /libpeerconnection.log
 testem.log
 /typings
+
+# System files
+.DS_Store
+Thumbs.db
+
+# Angular Files
+# Directorios
+node_modules/
+dist/
+.tmp/
+out-tsc/
+
+# Archivos
+*.log
+*.pid
+*.swp
+*.swo
+
+# Archivos de configuración
+.env
+.env.prod
+.env.dev
+
+# Archivos de dependencias de desarrollo
+package-lock.json
+yarn.lock
+
+# Archivos de IDE
+.vscode/
+.idea/
+*.iml
+
+# Archivos de respaldo
+*~
+*.bak
+*.backup
+
+# Environment development
+# environment.development.ts
