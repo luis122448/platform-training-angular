@@ -4,7 +4,7 @@
     "paths": {
       "@guard/*":["src/app/guards/*"],
       "@interceptor/*":["src/app/interceptors/*"],
-      "@environment/*":["src/app/environments/*"],
+      "@environment/*":["src/environments/*"],
       "@auth-model/*":["src/app/modules/auth/models/*"],
       "@auth-service/*":["src/app/modules/auth/services/*"],
       "@auth-component/*":["src/app/modules/auth/components/*"],

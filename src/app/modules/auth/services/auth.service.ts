@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { environment } from '@environment/environment';
+import { environment } from 'src/environments/environment';
 import { switchMap, tap } from 'rxjs/operators';
 import { ApiResponseAuth, AuthRespnseObject } from '@auth-model/auth.model';
 import { TokenService } from './token.service';

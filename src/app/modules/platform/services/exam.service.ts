@@ -2,7 +2,7 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { ApiResponseObject } from '@platform-model/api-response.model';
 import { ExamModel } from '@platform-model/exam-model';
-import { environment } from '@environment/environment';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
