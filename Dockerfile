@@ -34,4 +34,4 @@ COPY ./nginx.conf /etc/nginx/nginx.conf
 # Copy the build output to replace the default nginx contents.
 COPY --from=build /home/app/dist/platform-training /usr/share/nginx/html
 
-EXPOSE 4201
+EXPOSE 4202
